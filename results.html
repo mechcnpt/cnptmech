@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Department of Mechanical Engineering</title>
+    <link rel="shortcut icon" href="/images/logo1.png" type="image/x-icon">
+    <!-- Bootstrap & FontAwesome CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      
+        
+        .spinner-border {
+            display: none;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .loading .spinner-border {
+            display: inline-block;
+        }
+        .loading .btn-text {
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .result-table th {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .legend-table th {
+            background-color: #6c757d;
+            color: white;
+        }
+        .pass-mark-table th {
+            background-color: #198754;
+            color: white;
+        }
+        .fail {
+            background-color: #ffcccc;
+        }
+        .pass {
+            background-color: #ccffcc;
+        }
+        .absent {
+            background-color: #ffffcc;
+        }
+        .malpractice {
+            background-color: #ffccff;
+        }
+         #pass-mark-section {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+   <header class="fadeIn">
+    <div class="header-container d-flex justify-content-between align-items-center">
+        <img src="/images/logo1.png" alt="Logo 1" class="logo">
+        <div class="text-center">
+            <h1>P.T.Lee Chengalvaraya Naicker Polytechnic College</h1>
+            <h3>Department of Mechanical Engineering</h3>
+        </div>
+        <img src="/images/logo2.png" alt="Logo 2" class="logo">
+    </div>
+</header>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Department of Mechanical Engineering</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAcademic" role="button" data-bs-toggle="dropdown" aria-expanded="false">Academic</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownAcademic">
+                        <li><a class="dropdown-item" href="syllabus.html">Syllabus</a></li>
+                        <li><a class="dropdown-item" href="https://tndotehub.in/qp/qp.php" target="_blank">Theory Question Bank</a></li>
+                        <li><a class="dropdown-item" href="https://dte.tn.gov.in/-n-scheme-vi-th-semester-practical-question-bank-for-regular-courses-updated" target="_blank">Practical Question Bank</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="faculties.html">Faculties</a></li>
+                <li class="nav-item"><a class="nav-link" href="results.html">Results</a></li>
+                <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="placement.html">Placement</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center mb-4">Student Results</h2>
+        <div class="row">
+            <!-- Left Section -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Check Your Result</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="result-form">
+                            <div class="mb-3">
+                                <label for="register-number" class="form-label">Register Number</label>
+                                <input type="text" class="form-control" id="register-number" name="register-number" 
+                                       placeholder="Enter Register Number" required>
+                            </div>
+                        </form>
+
+                        <div id="result-details" class="mt-4">
+                            <!-- Results will be displayed here -->
+                        </div>
+
+                       <div class="mt-4">
+    <button id="toggle-pass-marks" class="btn btn-sm btn-outline-secondary mb-2">
+        <i class="fas fa-eye-slash"></i> Show Minimum Pass Marks
+    </button>
+    <div id="pass-marks-section" style="display: none;">
+        <h5>Minimum Pass Marks</h5>
+        <table class="table table-bordered pass-mark-table">
+                                <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Subject Name</th>
+                                        <th>CA1</th>
+                                        <th>CA2</th>
+                                        <th>CA3</th>
+                                        <th>CA4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Subject 1</td>
+                                        <td>Advanced Manufacturing Technology</td>
+                                        <td>20</td>
+                                        <td>20</td>
+                                        <td>24</td>
+                                        <td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subject 2</td>
+                                        <td>Fluid Mechanics</td>
+                                        <td>20</td>
+                                        <td>20</td>
+                                        <td>40</td>
+                                        <td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subject 3</td>
+                                        <td>Advanced Manufacturing Technology Practical</td>
+                                        <td>20</td>
+                                        <td>20</td>
+                                        <td>40</td>
+                                        <td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subject 4</td>
+                                        <td>Sensors and Actuators</td>
+                                        <td>24</td>
+                                        <td>24</td>
+                                        <td>40</td>
+                                        <td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subject 5</td>
+                                        <td>Heat Power Engineering</td>
+                                        <td>24</td>
+                                        <td>24</td>
+                                        <td>40</td>
+                                        <td>40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subject 6</td>
+                                        <td>Metrology and Measurement</td>
+                                        <td>24</td>
+                                        <td>24</td>
+                                        <td>40</td>
+                                        <td>40</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Result Options</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-info position-relative" onclick="fetchResultFor('CA1')">
+                                <span class="btn-text">CA1 Result</span>
+                                <span class="spinner-border spinner-border-sm"></span>
+                            </button>
+                            <button class="btn btn-info position-relative" onclick="fetchResultFor('CA2')">
+                                <span class="btn-text">CA2 Result</span>
+                                <span class="spinner-border spinner-border-sm"></span>
+                            </button>
+                            <button class="btn btn-info position-relative" onclick="fetchResultFor('CA3')">
+                                <span class="btn-text">CA3 Result</span>
+                                <span class="spinner-border spinner-border-sm"></span>
+                            </button>
+                            <button class="btn btn-info position-relative" onclick="fetchResultFor('CA4')">
+                                <span class="btn-text">CA4 Result</span>
+                                <span class="spinner-border spinner-border-sm"></span>
+                            </button>
+                            <a href="https://dte.tn.gov.in/diploma-results" class="btn btn-info" target="_blank">
+                                Board Exam Result
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Result Legend</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered legend-table">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Status</th>
+                                    <th>Color</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>Absent</td>
+                                    <td class="absent"></td>
+                                </tr>
+                                <tr>
+                                    <td>MP</td>
+                                    <td>Mal Practice</td>
+                                    <td class="malpractice"></td>
+                                </tr>
+                                <tr class="fail">
+                                    <td>Below Pass Mark</td>
+                                    <td>Fail</td>
+                                    <td class="fail"></td>
+                                </tr>
+                                <tr class="pass">
+                                    <td>Above Pass Mark</td>
+                                    <td>Pass</td>
+                                    <td class="pass"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as before) -->
+    <!-- ... -->
+
+    <script>
+        // Minimum pass marks for each subject and CA test
+        const passMarks = {
+            "Subject 1": { CA1: 20, CA2: 20, CA3: 24, CA4: 40 },
+            "Subject 2": { CA1: 20, CA2: 20, CA3: 40, CA4: 40 },
+            "Subject 3": { CA1: 20, CA2: 20, CA3: 40, CA4: 40 },
+            "Subject 4": { CA1: 24, CA2: 24, CA3: 40, CA4: 40 },
+            "Subject 5": { CA1: 24, CA2: 24, CA3: 40, CA4: 40 },
+            "Subject 6": { CA1: 24, CA2: 24, CA3: 40, CA4: 40 }
+        };
+
+        const resultCache = {};
+        let currentRegisterNumber = '';
+        let currentCAType = '';
+
+        function setLoading(button, isLoading) {
+            const buttons = document.querySelectorAll('.card-body .btn:not([href])');
+            buttons.forEach(btn => {
+                if (isLoading && btn === button) {
+                    btn.classList.add('loading');
+                    btn.disabled = true;
+                } else {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                }
+            });
+        }
+                document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('toggle-pass-marks');
+            const passMarksSection = document.getElementById('pass-marks-section');
+            
+            toggleBtn.addEventListener('click', function() {
+                if (passMarksSection.style.display === 'none') {
+                    passMarksSection.style.display = 'block';
+                    toggleBtn.innerHTML = '<i class="fas fa-eye"></i> Hide Minimum Pass Marks';
+                } else {
+                    passMarksSection.style.display = 'none';
+                    toggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i> Show Minimum Pass Marks';
+                }
+            });
+        });
+
+        async function fetchResultFor(caType) {
+            currentRegisterNumber = document.getElementById('register-number').value.trim();
+            currentCAType = caType;
+            
+            if (!currentRegisterNumber) {
+                alert("Please enter a register number");
+                return;
+            }
+
+            const cacheKey = `${currentRegisterNumber}_${caType}`;
+            
+            if (resultCache[cacheKey]) {
+                displayResult(resultCache[cacheKey], caType);
+                return;
+            }
+
+            const button = event.target.closest('button');
+            setLoading(button, true);
+
+            document.getElementById('result-details').innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Fetching ${caType} results...</p>
+                </div>
+            `;
+
+            try {
+                const apiUrl = 'https://script.google.com/macros/s/AKfycbyF_bZm4qQIDFSiW_4qRXRbtPywN7tO9OYbCRsRkhoeZ2gK__MxKnU4qr7r2vgxj4w_vw/exec';
+                const timestamp = new Date().getTime();
+                const url = `${apiUrl}?registerNumber=${currentRegisterNumber}&caType=${caType}&_=${timestamp}`;
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+                
+                resultCache[cacheKey] = data;
+                displayResult(data, caType);
+                
+            } catch (error) {
+                document.getElementById('result-details').innerHTML = `
+                    <div class="alert alert-danger">
+                        Error fetching result: ${error.message}
+                    </div>
+                `;
+                console.error('Error:', error);
+            } finally {
+                setLoading(button, false);
+            }
+        }
+
+        function displayResult(data, caType) {
+            let resultHTML = `
+                <div class="result-container">
+                    <h4>${caType} Result for ${currentRegisterNumber}</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered result-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Marks</th>
+                                    <th>Status</th>
+                                    <th>Pass Mark</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            `;
+            
+            for (const subject in data) {
+                const marks = data[subject];
+                const minPass = passMarks[subject] ? passMarks[subject][caType] : 0;
+                let status = '';
+                let rowClass = '';
+                
+                if (marks === 'A') {
+                    status = 'Absent';
+                    rowClass = 'absent';
+                } else if (marks === 'MP') {
+                    status = 'Mal Practice';
+                    rowClass = 'malpractice';
+                } else {
+                    const numericMarks = parseInt(marks);
+                    if (numericMarks >= minPass) {
+                        status = 'Pass';
+                        rowClass = 'pass';
+                    } else {
+                        status = 'Fail';
+                        rowClass = 'fail';
+                    }
+                }
+                
+                resultHTML += `
+                    <tr class="${rowClass}">
+                        <td>${subject}</td>
+                        <td>${marks}</td>
+                        <td>${status}</td>
+                        <td>${minPass}</td>
+                    </tr>
+                `;
+            }
+            
+            resultHTML += `
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-muted small">Last updated: ${new Date().toLocaleString()}</p>
+                </div>
+            `;
+            
+            document.getElementById('result-details').innerHTML = resultHTML;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('register-number').focus();
+        });
+    </script>
+</body>
+</html>

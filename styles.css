@@ -1,0 +1,168 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8fafa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #64b445;
+    color: white;
+    padding: 10px 0;
+}
+
+header .logo {
+    width: 80px;
+    height: auto;
+}
+
+header .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav {
+    background-color: #065ab9;
+    padding: 10px;
+}
+
+nav .navbar-nav .nav-link {
+    color: white;
+}
+
+footer {
+    background-color: #2010f7;
+    color: white;
+    text-align: center;
+    margin: 20px;
+    padding: 0px;
+}
+
+main {
+    padding: 10px 0px;
+}
+
+/* For Animations */
+.fadeIn {
+    animation: fadeIn 2s ease-in;
+}
+
+/* Table Styling for Faculties */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #0d5fda;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #343a40;
+    color: white;
+}
+
+tr:hover {
+    background-color: #15c5e4;
+}
+
+/* Contact Form */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Flash News Section */
+#flash-news {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #c8f015;
+    padding: 0px;
+    width: 100%;
+    
+}
+
+.flash-news-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Hide any overflowed text */
+    white-space: nowrap; /* Ensures the text is on a single line */
+}
+
+.flash-news-heading {
+    position: absolute;
+    left: 0;
+    background-color: #f8101c;
+    color: white;
+    padding: 10px 10px;
+    z-index: 1;
+    font-size: 1.5em;
+}
+
+/* Pause animation when hover */
+#flash-news:hover .flash-news-content {
+    animation-play-state: paused; /* Pause the scroll when mouse is over the section */
+}
+
+.flash-news-content {
+    padding-left: 160px; /* Ensure enough space for the fixed heading */
+    font-size: 1.2em;
+    animation: scrollNews 15s linear infinite;
+}
+
+/* Animation for News to Scroll */
+@keyframes scrollNews {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.slides img {
+    width: 100%;
+    height: 300px;
+    display: none;
+}
+
+.institution-vision, .department-vision {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+
+/* Gallery Section Styling */
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-item {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

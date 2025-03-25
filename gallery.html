@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Department of Mechanical Engineering</title>
+    <link rel="shortcut icon" href="/images/logo1.png" type="image/x-icon">
+    <!-- Bootstrap & FontAwesome CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .gallery-item {
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: scale(1.25);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .event-title {
+            text-align: center;
+            margin: 20px 0;
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+        .no-images {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            text-align: center;
+        }
+        .lightbox-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        .lightbox-close, .lightbox-prev, .lightbox-next {
+            position: absolute;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 5px;
+        }
+        .lightbox-close {
+            top: 20px;
+            right: 20px;
+        }
+        .lightbox-prev {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lightbox-next {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2rem;
+            background-color: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="fadeIn">
+        <div class="header-container d-flex justify-content-between align-items-center">
+            <img src="/images/logo1.png" alt="Logo 1" class="logo">
+            <div class="text-center">
+                <h1>P.T.Lee Chengalvaraya Naicker Polytechnic College</h1>
+                <h3>Department of Mechanical Engineering</h3>
+            </div>
+            <img src="/images/logo2.png" alt="Logo 2" class="logo">
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Department of Mechanical Engineering</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAcademic" role="button" data-bs-toggle="dropdown" aria-expanded="false">Academic</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownAcademic">
+                            <li><a class="dropdown-item" href="syllabus.html">Syllabus</a></li>
+                            <li><a class="dropdown-item" href="https://tndotehub.in/qp/qp.php" target="_blank">Theory Question Bank</a></li>
+                            <li><a class="dropdown-item" href="https://dte.tn.gov.in/-n-scheme-vi-th-semester-practical-question-bank-for-regular-courses-updated" target="_blank">Practical Question Bank</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="faculties.html">Faculties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="results.html">Results</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="placement.html">Placement</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Department Gallery</h2>
+        
+        <!-- Event Selection Dropdown -->
+        <div class="mb-4">
+            <label for="event-select" class="form-label">Select an Event</label>
+            <select id="event-select" class="form-select" onchange="showImages()">
+                <option value="">-- Select Event --</option>
+                <option value="mechathlon">MECHATHLON 2025</option>
+                <option value="sports">Annual Sports Meet</option>
+                <option value="robotics">Workshop on Robotics</option>
+                <option value="industrial-visit">Industrial Visit</option>
+                <option value="graduation">Graduation Day</option>
+            </select>
+        </div>
+
+        <!-- Event Title -->
+        <div id="event-title" class="event-title"></div>
+
+        <!-- Image Gallery Section -->
+        <div id="gallery" class="row">
+            <div class="col-12">
+                <p class="no-images">Please select an event to view photos</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <span class="lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <span class="lightbox-next" onclick="changeImage(1)">&#10095;</span>
+            <div id="lightbox-counter" class="lightbox-counter"></div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 Department of Mechanical Engineering. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Event data with folder names and display names
+        const events = {
+            "mechathlon": {
+                name: "MECHATHLON 2025 (A National Level Technical Symposium)",
+                images: ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg", "8.jpeg", "9.jpeg", "10.jpeg",  
+                            "11.jpeg", "12.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg", "19.jpeg", "20.jpeg",  
+                            "21.jpeg", "22.jpeg", "23.jpeg", "24.jpeg", "25.jpeg", "26.jpeg", "27.jpeg", "28.jpeg", "29.jpeg", "30.jpeg",  
+                            "31.jpeg", "32.jpeg", "33.jpeg", "34.jpeg", "35.jpeg", "36.jpeg", "37.jpeg", "38.jpeg", "39.jpeg", "40.jpeg",  
+                            "41.jpeg", "42.jpeg", "43.jpeg", "44.jpeg", "45.jpeg", "46.jpeg", "47.jpeg", "48.jpeg", "49.jpeg", "50.jpeg",  
+                            "51.jpeg", "52.jpeg", "53.jpeg", "54.jpeg", "55.jpeg", "56.jpeg", "57.jpeg", "58.jpeg", "59.jpeg", "60.jpeg",  
+                            "61.jpeg", "62.jpeg", "63.jpeg", "64.jpeg", "65.jpeg", "66.jpeg", "67.jpeg", "68.jpeg", "69.jpeg", "70.jpeg",  
+                            "71.jpeg", "72.jpeg", "73.jpeg", "74.jpeg", "75.jpeg", "76.jpeg", "77.jpeg", "78.jpeg", "79.jpeg", "80.jpeg",  
+                            "81.jpeg", "82.jpeg", "83.jpeg", "84.jpeg", "85.jpeg", "86.jpeg", "87.jpeg", "88.jpeg", "89.jpeg", "90.jpeg",  
+                            "91.jpeg", "92.jpeg", "93.jpeg", "94.jpeg", "95.jpeg", "96.jpeg", "97.jpeg", "98.jpeg", "99.jpeg", "100.jpeg",  
+                            "101.jpeg"  
+]
+            },
+            "sports": {
+                name: "Annual Sports Meet",
+                images: ["sports1.jpg", "sports2.jpg", "sports3.jpg"]
+            },
+            "robotics": {
+                name: "Workshop on Robotics",
+                images: ["robot1.jpg", "robot2.jpg", "robot3.jpg"]
+            },
+            "industrial-visit": {
+                name: "Industrial Visit",
+                images: ["industry1.jpg", "industry2.jpg"]
+            },
+            "graduation": {
+                name: "Graduation Day",
+                images: ["grad1.jpg", "grad2.jpg", "grad3.jpg", "grad4.jpg"]
+            }
+        };
+
+        // Lightbox variables
+        let currentEvent = '';
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function showImages() {
+            const selectedEvent = document.getElementById("event-select").value;
+            const gallery = document.getElementById("gallery");
+            const eventTitle = document.getElementById("event-title");
+            
+            gallery.innerHTML = '';
+            
+            if (!selectedEvent) {
+                eventTitle.innerHTML = '';
+                gallery.innerHTML = '<div class="col-12"><p class="no-images">Please select an event to view photos</p></div>';
+                return;
+            }
+            
+            const eventData = events[selectedEvent];
+            eventTitle.innerHTML = eventData.name;
+            currentEvent = selectedEvent;
+            currentImages = eventData.images;
+            
+            if (eventData.images.length === 0) {
+                gallery.innerHTML = '<div class="col-12"><p class="no-images">No photos available for this event</p></div>';
+                return;
+            }
+            
+            eventData.images.forEach((image, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4 col-sm-6 gallery-item';
+                
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'card mb-4 shadow-sm';
+                
+                const img = document.createElement('img');
+                img.src = `images/gallery/${selectedEvent}/${image}`;
+                img.alt = eventData.name;
+                img.className = 'card-img-top';
+                img.onclick = () => openLightbox(index);
+                
+                imgContainer.appendChild(img);
+                col.appendChild(imgContainer);
+                gallery.appendChild(col);
+            });
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            const lightboxCounter = document.getElementById("lightbox-counter");
+            
+            lightboxImg.src = `images/gallery/${currentEvent}/${currentImages[currentIndex]}`;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+            lightbox.style.display = "block";
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+        }
+
+        function changeImage(step) {
+            currentIndex += step;
+            
+            // Wrap around if at beginning or end
+            if (currentIndex >= currentImages.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = currentImages.length - 1;
+            }
+            
+            const lightboxImg = document.getElementById("lightbox-img");
+            const lightboxCounter = document.getElementById("lightbox-counter");
+            
+            lightboxImg.src = `images/gallery/${currentEvent}/${currentImages[currentIndex]}`;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById("lightbox").onclick = function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        };
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById("lightbox");
+            if (lightbox.style.display === "block") {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        changeImage(-1);
+                        break;
+                    case 'ArrowRight':
+                        changeImage(1);
+                        break;
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                }
+            }
+        });
+    </script>
+
+    <!-- External JS for Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
