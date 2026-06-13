@@ -2,227 +2,462 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Faculties - Department of Mechanical Engineering</title>
     <link rel="shortcut icon" href="images/logo1.png" type="image/x-icon">
     <!-- Bootstrap & FontAwesome CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4f8;
+            color: #1e293b;
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .fadeIn {
+            animation: fadeInUp 0.7s ease forwards;
+        }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #45B7D1);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header .logo {
+            width: 80px;
+            height: auto;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+            transition: transform 0.3s ease;
+        }
+        header .logo:hover { transform: scale(1.05); }
+        header .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        header h1 {
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 1.6rem;
+        }
+        header h3 {
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+            font-size: 1.2rem;
+        }
+        /* Navigation */
+        nav {
+            background: linear-gradient(90deg, #FF512F, #DD2475, #FF512F);
+            background-size: 200% auto;
+            animation: navGlow 6s ease infinite;
+            padding: 12px 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        @keyframes navGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        nav .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 600;
+            padding: 8px 18px !important;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            margin: 0 3px;
+        }
+        nav .navbar-nav .nav-link:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        nav .navbar-brand {
+            color: white !important;
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+        .dropdown-menu {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 15px;
+        }
+        .dropdown-item {
+            color: white;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .dropdown-item:hover {
+            background: rgba(255,255,255,0.3);
+            color: white;
+        }
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        .page-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        .page-title h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF512F, #DD2475);
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 30px 30px 20px 30px;
+            padding: 12px 25px;
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 8px solid;
+        }
+        .section-header i {
+            font-size: 2rem;
+        }
+        .section-header h3 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+        .section-header .count-badge {
+            margin-left: auto;
+            background: #e2e8f0;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .hod-header { border-left-color: #FF6B6B; }
+        .lecturer-header { border-left-color: #4ECDC4; }
+        .skilled-header { border-left-color: #45B7D1; }
+        
+        /* Staff Grid */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+            padding: 10px 30px 40px;
+            max-width: 1450px;
+            margin: 0 auto;
+        }
+        
+        /* ========== NEW GRADIENT STAFF CARDS ========== */
+        /* HOD Card - Royal Premium Gradient */
+        .staff-card-hod {
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -12px rgba(255, 107, 107, 0.25);
+            transition: all 0.35s ease;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            position: relative;
+        }
+        .staff-card-hod:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(255, 107, 107, 0.4);
+            border-color: #FF6B6B;
+        }
+        .staff-card-hod .staff-card-header {
+            background: linear-gradient(115deg, #FF6B6B, #ee5a24);
+            padding: 20px 22px 14px;
+            border-bottom: none;
+        }
+        .staff-card-hod .staff-icon {
+            background: linear-gradient(145deg, #ffffff, #ffe0e0);
+            color: #FF6B6B;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .staff-card-hod .staff-name { color: #fff; }
+        .staff-card-hod .staff-designation { background: rgba(255,255,255,0.25); color: white; }
+        .staff-card-hod .info-label i { color: #FF6B6B; }
+        
+        /* Lecturer Card - Teal & Blue Premium Gradient */
+        .staff-card-lecturer {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fffe 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -12px rgba(78, 205, 196, 0.25);
+            transition: all 0.35s ease;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+        }
+        .staff-card-lecturer:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(78, 205, 196, 0.4);
+            border-color: #4ECDC4;
+        }
+        .staff-card-lecturer .staff-card-header {
+            background: linear-gradient(115deg, #4ECDC4, #2c9c91);
+            padding: 20px 22px 14px;
+            border-bottom: none;
+        }
+        .staff-card-lecturer .staff-icon {
+            background: linear-gradient(145deg, #ffffff, #e0f7f5);
+            color: #2c9c91;
+        }
+        .staff-card-lecturer .staff-name { color: #fff; }
+        .staff-card-lecturer .staff-designation { background: rgba(255,255,255,0.25); color: white; }
+        .staff-card-lecturer .info-label i { color: #4ECDC4; }
+        
+        /* Skilled Assistant Card - Purple & Orange Gradient */
+        .staff-card-skilled {
+            background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -12px rgba(114, 9, 183, 0.2);
+            transition: all 0.35s ease;
+            border: 1px solid rgba(114, 9, 183, 0.15);
+        }
+        .staff-card-skilled:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(114, 9, 183, 0.35);
+            border-color: #a855f7;
+        }
+        .staff-card-skilled .staff-card-header {
+            background: linear-gradient(115deg, #8b5cf6, #6d28d9);
+            padding: 20px 22px 14px;
+            border-bottom: none;
+        }
+        .staff-card-skilled .staff-icon {
+            background: linear-gradient(145deg, #ffffff, #ede9fe);
+            color: #6d28d9;
+        }
+        .staff-card-skilled .staff-name { color: #fff; }
+        .staff-card-skilled .staff-designation { background: rgba(255,255,255,0.25); color: white; }
+        .staff-card-skilled .info-label i { color: #8b5cf6; }
+        
+        /* Common Card Body Styles */
+        .staff-card-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .staff-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            box-shadow: 0 8px 14px rgba(0,0,0,0.1);
+        }
+        .staff-basic { flex: 1; }
+        .staff-name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
+        }
+        .staff-designation {
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+        }
+        .staff-card-body {
+            padding: 18px 22px 22px;
+            background: transparent;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .info-label {
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 100px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-label i { width: 24px; font-size: 1rem; }
+        .info-value {
+            color: #334155;
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.8);
+            padding: 6px 16px;
+            border-radius: 40px;
+            flex: 1;
+            backdrop-filter: blur(2px);
+        }
+        footer {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: white;
+            text-align: center;
+            margin: 30px 0 0 0;
+            padding: 25px 20px;
+            border-radius: 30px 30px 0 0;
+        }
+        @media (max-width: 768px) {
+            .staff-grid { grid-template-columns: 1fr; padding: 10px 15px 25px; }
+            .section-header { margin: 20px 15px; flex-wrap: wrap; }
+            .section-header h3 { font-size: 1.2rem; }
+            header h1 { font-size: 1rem; }
+            header h3 { font-size: 0.8rem; }
+            .logo { width: 50px; }
+            .page-title h2 { font-size: 1.6rem; }
+            .staff-card-header { padding: 16px 18px !important; }
+            .staff-name { font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
-   <!-- Header -->
-   <header class="fadeIn">
-    <div class="header-container d-flex justify-content-between align-items-center">
-        <img src="images/logo1.png" alt="Logo 1" class="logo">
-        <div class="text-center">
-            <h1>P.T.Lee Chengalvaraya Naicker Polytechnic College</h1>
-            <h3>Department of Mechanical Engineering</h3>
-        </div>
-        <img src="images/logo2.png" alt="Logo 2" class="logo">
-    </div>
-</header>
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAcademic" role="button" data-bs-toggle="dropdown" aria-expanded="false">Academic</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownAcademic">
-                        <li><a class="dropdown-item" href="syllabus.html">Syllabus</a></li>
-                        <li><a class="dropdown-item" href="https://tndotehub.in/qp/qp.php" target="_blank">Theory Question Bank</a></li>
-                        <li><a class="dropdown-item" href="https://dte.tn.gov.in/-n-scheme-vi-th-semester-practical-question-bank-for-regular-courses-updated" target="_blank">Practical Question Bank</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="faculties.html">Faculties</a></li>
-                <li class="nav-item"><a class="nav-link" href="results.html">Results</a></li>
-                <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="placement.html">Placement</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-            </ul>
+    <!-- Header -->
+    <header class="fadeIn">
+        <div class="header-container d-flex justify-content-between align-items-center">
+            <img src="images/logo1.png" alt="Logo 1" class="logo">
+            <div class="text-center">
+                <h1>P.T.Lee Chengalvaraya Naicker Polytechnic College</h1>
+                <h3>Department of Mechanical Engineering</h3>
+            </div>
+            <img src="images/logo2.png" alt="Logo 2" class="logo">
         </div>
-    </div>
-</nav>
-    <main class="container mt-5">
-        <h2>Faculty Members</h2>
-        <table class="table table-bordered">
-            <thead style="background-color: blue;">
-                <tr>
-                    <th>Sl. No.</th>
-                    <th>Name</th>
-                    <th>Qualification</th>
-                    <th>Designation</th>
-                    <!-- <th>Years of Experience</th> -->
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Er. S. Saravanan</td>
-                    <td>M.E., M.B.A.</td>
-                    <td>Head of the Department</td>
-                    <!-- <td>15</td> -->
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Er. B. Rajeswari</td>
-                    <td>M.E.,</td>
-                    <td>Lecturer Sl.Gr.</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Er. M. Baskaran</td>
-                    <td>M.E.,</td>
-                    <td>Lecturer Sl.Gr.</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Er. S. Kumararaja</td>
-                    <td>B.E.,</td>
-                    <td>Lecturer </td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>	Er. D. Venkatesh</td>
-                    <td>M.E.,</td>
-                    <td>Lecturer </td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Er. R. Senthil Nehru</td>
-                    <td>M.E., M.B.A.</td>
-                    <td>Lecturer </td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Er. M. Jayakumar</td>
-                    <td>B.E.,</td>
-                    <td>Lecturer </td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Er. M. Shankar</td>
-                    <td>M.E.,</td>
-                    <td>Lecturer </td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Er. V. Chidambaram</td>
-                    <td>B.E.,</td>
-                    <td>Lecturer </td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Er. A. Kanthavel</td>
-                    <td>M.E.,</td>
-                    <td>Part Time Guest Lecturer</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Er. M.Karthik</td>
-                    <td>B.E.,</td>
-                    <td>Part Time Guest Lecturer </td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Er. K. Prakash</td>
-                    <td>D.A.E.,</td>
-                    <td>Junior Drafting Officer </td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Er. D. Dellibabu</td>
-                    <td>D.M.E.</td>
-                    <td>W/s Instructor</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>Er. S. Ganesan</td>
-                    <td>D.M.E.</td>
-                    <td>Skilled Assistant</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td>Er. R. Babu</td>
-                    <td>B.E.,</td>
-                    <td>Skilled Assistant</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td>Thiru G. Rajamani</td>
-                    <td>I.T.I. (Welding)</td>
-                    <td>Skilled Assistant</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>17</td>
-                    <td>Thiru S. Arokiadoss</td>
-                    <td>I.T.I., DCE (Carpentary, Wiring)</td>
-                    <td>Skilled Assistant</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td>Thiru. M. Thangaraj</td>
-                    <td>I.T.I. (Turner)</td>
-                    <td>Skilled Assistant</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td>Thiru. S. Elangovan</td>
-                    <td>I.T.I. (Fitter)</td>
-                    <td>Skilled Assistant</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>20</td>
-                    <td>Thiru. G. Anbazhagan</td>
-                    <td>I.T.I. </td>
-                    <td>Skilled Assistant Sl.Gr.</td>
-                    <!-- <td>8</td> -->
-                </tr>
-                <tr>
-                    <td>21</td>
-                    <td>Er. M. Manikandan</td>
-                    <td>D.M.E., </td>
-                    <td>Skilled Assistant Sl.Gr.</td>
-                    <!-- <td>8</td> -->
-                </tr>
+    </header>
 
-                <!-- Add more rows as necessary -->
-            </tbody>
-        </table>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAcademic" role="button" data-bs-toggle="dropdown" aria-expanded="false">Academic</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownAcademic">
+                            <li><a class="dropdown-item" href="syllabus.html">Syllabus</a></li>
+                            <li><a class="dropdown-item" href="https://tndotehub.in/qp/qp.php" target="_blank">Theory Question Bank</a></li>
+                            <li><a class="dropdown-item" href="https://dte.tn.gov.in/-n-scheme-vi-th-semester-practical-question-bank-for-regular-courses-updated" target="_blank">Practical Question Bank</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="faculties.html">Faculties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="results.html">Results</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="placement.html">Placement</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="page-title fadeIn">
+            <h2><i class="fas fa-users me-2"></i>Our Faculty & Staff</h2>
+            <p class="text-muted mt-2">Meet our dedicated team of educators and technical experts</p>
+        </div>
+
+        <!-- ==================== SECTION 1: HEAD OF DEPARTMENT ==================== -->
+        <div class="section-header hod-header fadeIn">
+            <i class="fas fa-user-tie" style="color: #FF6B6B;"></i>
+            <h3>Head of Department</h3>
+            <span class="count-badge"><i class="fas fa-user me-1"></i>1 Member</span>
+        </div>
+        <div class="staff-grid fadeIn">
+            <!-- HOD Card with Royal Red Gradient -->
+            <div class="staff-card-hod">
+                <div class="staff-card-header">
+                    <div class="staff-icon"><i class="fas fa-crown"></i></div>
+                    <div class="staff-basic">
+                        <div class="staff-name">Er. S. Saravanan</div>
+                        <div class="staff-designation">Head of the Department</div>
+                    </div>
+                </div>
+                <div class="staff-card-body">
+                    <div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">M.E., M.B.A.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SECTION 2: LECTURERS ==================== -->
+        <div class="section-header lecturer-header fadeIn">
+            <i class="fas fa-chalkboard-user" style="color: #4ECDC4;"></i>
+            <h3>Lecturers & Faculty</h3>
+            <span class="count-badge"><i class="fas fa-users me-1"></i>10 Members</span>
+        </div>
+        <div class="staff-grid fadeIn">
+            <!-- Lecturer Cards with Teal Gradient -->
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard-user"></i></div><div class="staff-basic"><div class="staff-name">Er. B. Rajeswari</div><div class="staff-designation">Lecturer Sl.Gr.</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">M.E.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard-user"></i></div><div class="staff-basic"><div class="staff-name">Er. M. Baskaran</div><div class="staff-designation">Lecturer Sl.Gr.</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">M.E.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard-user"></i></div><div class="staff-basic"><div class="staff-name">Er. S. Kumararaja</div><div class="staff-designation">Lecturer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">B.E.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard-user"></i></div><div class="staff-basic"><div class="staff-name">Er. D. Venkatesh</div><div class="staff-designation">Lecturer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">M.E.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard-user"></i></div><div class="staff-basic"><div class="staff-name">Er. R. Senthil Nehru</div><div class="staff-designation">Lecturer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">M.E., M.B.A.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard-user"></i></div><div class="staff-basic"><div class="staff-name">Er. M. Jayakumar</div><div class="staff-designation">Lecturer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">B.E.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard-user"></i></div><div class="staff-basic"><div class="staff-name">Er. M. Shankar</div><div class="staff-designation">Lecturer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">M.E.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard-user"></i></div><div class="staff-basic"><div class="staff-name">Er. V. Chidambaram</div><div class="staff-designation">Lecturer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">B.E.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-user-friends"></i></div><div class="staff-basic"><div class="staff-name">Er. A. Kanthavel</div><div class="staff-designation">Part Time Guest Lecturer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">M.E.</div></div></div></div>
+            <div class="staff-card-lecturer"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-user-friends"></i></div><div class="staff-basic"><div class="staff-name">Er. M.Karthik</div><div class="staff-designation">Part Time Guest Lecturer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">B.E.</div></div></div></div>
+        </div>
+
+        <!-- ==================== SECTION 3: SKILLED ASSISTANTS ==================== -->
+        <div class="section-header skilled-header fadeIn">
+            <i class="fas fa-tools" style="color: #8b5cf6;"></i>
+            <h3>Skilled Assistants & Support Staff</h3>
+            <span class="count-badge"><i class="fas fa-user-cog me-1"></i>10 Members</span>
+        </div>
+        <div class="staff-grid fadeIn">
+            <!-- Skilled Assistant Cards with Purple Gradient -->
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-drafting-compass"></i></div><div class="staff-basic"><div class="staff-name">Er. K. Prakash</div><div class="staff-designation">Junior Drafting Officer</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">D.A.E.</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-tools"></i></div><div class="staff-basic"><div class="staff-name">Er. D. Dellibabu</div><div class="staff-designation">W/s Instructor</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">D.M.E.</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-hands-helping"></i></div><div class="staff-basic"><div class="staff-name">Er. S. Ganesan</div><div class="staff-designation">Skilled Assistant</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">D.M.E.</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-user-cog"></i></div><div class="staff-basic"><div class="staff-name">Er. R. Babu</div><div class="staff-designation">Skilled Assistant</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">B.E.</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-wrench"></i></div><div class="staff-basic"><div class="staff-name">Thiru G. Rajamani</div><div class="staff-designation">Skilled Assistant</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">I.T.I. (Welding)</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-plug"></i></div><div class="staff-basic"><div class="staff-name">Thiru S. Arokiadoss</div><div class="staff-designation">Skilled Assistant</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">I.T.I., DCE (Carpentary, Wiring)</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-industry"></i></div><div class="staff-basic"><div class="staff-name">Thiru. M. Thangaraj</div><div class="staff-designation">Skilled Assistant</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">I.T.I. (Turner)</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-hammer"></i></div><div class="staff-basic"><div class="staff-name">Thiru. S. Elangovan</div><div class="staff-designation">Skilled Assistant</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">I.T.I. (Fitter)</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-tasks"></i></div><div class="staff-basic"><div class="staff-name">Thiru. G. Anbazhagan</div><div class="staff-designation">Skilled Assistant Sl.Gr.</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">I.T.I.</div></div></div></div>
+            <div class="staff-card-skilled"><div class="staff-card-header"><div class="staff-icon"><i class="fas fa-chalkboard"></i></div><div class="staff-basic"><div class="staff-name">Er. M. Manikandan</div><div class="staff-designation">Skilled Assistant Sl.Gr.</div></div></div><div class="staff-card-body"><div class="info-row"><div class="info-label"><i class="fas fa-graduation-cap"></i> Qualification</div><div class="info-value">D.M.E.</div></div></div></div>
+        </div>
     </main>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Department of Mechanical Engineering. All rights reserved.</p>
     </footer>
 
-    <!-- External JS for Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
