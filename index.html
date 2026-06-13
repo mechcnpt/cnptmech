@@ -10,13 +10,57 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Additional Inline Styles for Animation */
+        /* Additional Inline Styles for Animation and Table Styling */
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
         .fadeIn {
             animation: fadeIn 2s ease-in;
+        }
+
+        /* Style for vision-mission tables to enhance readability */
+        .vision-mission-table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .vision-mission-table th, .vision-mission-table td {
+            border: 1px solid #ddd;
+            padding: 20px;
+            vertical-align: top;
+            background-color: #fff;
+        }
+        .vision-mission-table th {
+            background-color: #1e3c72;
+            color: white;
+            font-size: 1.3rem;
+            text-align: center;
+            width: 50%;
+        }
+        .vision-mission-table td {
+            background-color: #f9f9fc;
+        }
+        .vision-mission-table ul {
+            margin-bottom: 0;
+            padding-left: 1.2rem;
+        }
+        .vision-mission-table li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        @media (max-width: 768px) {
+            .vision-mission-table th, .vision-mission-table td {
+                padding: 12px;
+                display: block;
+                width: 100%;
+            }
+            .vision-mission-table tr {
+                display: block;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -66,17 +110,16 @@
     <!-- Home Page Sections -->
     <main>
         <!-- Flash News Section -->
-<section id="flash-news" class="fadeIn">
-    <div class="flash-news-container">
-        <h3 class="flash-news-heading">Flash News</h3>
-        <p class="flash-news-content">Stay updated with the latest announcements and news related to the department...</p> 
-        <p class="flash-news-content">Stay updated with the latest announcements and news related to the department...</p>
-    </div>
-</section>
+        <section id="flash-news" class="fadeIn">
+            <div class="flash-news-container">
+                <h3 class="flash-news-heading">Flash News</h3>
+                <p class="flash-news-content">Stay updated with the latest announcements and news related to the department...</p> 
+                <p class="flash-news-content">Stay updated with the latest announcements and news related to the department...</p>
+            </div>
+        </section>
 
-       <!-- Image Slider Section -->
+        <!-- Image Slider Section -->
         <center><section id="image-slider" class="fadeIn">
-            <!-- <h3>Photo Gallery</h3> -->
             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -89,7 +132,7 @@
                         <img src="images/slide3.jpeg" class="d-block w-100" alt="Slide 3">
                     </div>
                     <div class="carousel-item">
-                        <img src="images/slide4.jpeg" class="d-block w-100" alt="Slide 3">
+                        <img src="images/slide4.jpeg" class="d-block w-100" alt="Slide 4">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -112,38 +155,60 @@
             <p style="text-align: justify;">The college also focuses on extracurricular activities, including technical clubs and industry visits, to enhance students' exposure to real-world applications. Placement support is provided to help graduates secure jobs in reputed companies.</p>
         </section>
 
+        <!-- Institution Vision & Mission - Updated as per request -->
         <section id="institution-vision-mission" class="fadeIn" style="padding: 20px;">
             <center>
                 <h2>Institution Vision & Mission</h2>
-                <table style="align-content: center;">
-                    <tr><th>Vision</th><th>Mission</th></tr>
-                    <tr><td><ul><li>To achieve our goal of becoming a model polytechnic institution, we focus on offering both syllabus-oriented classes and job-oriented courses to equip students with the skills needed to excel in engineering fields and adapt to the latest technological developments.</li></ul>
-                    
-                    </td><td><ul><li>To promote academic excellence, cultivate self discipline and high ideals for total personality development and to convert a novice into a competent technologist at global level through dedicated team work.</li>
-                    </ul></td></tr>
+                <table class="vision-mission-table" style="align-content: center;">
+                    <tr>
+                        <th>Vision</th>
+                        <th>Mission</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>To achieve our goal of becoming a model polytechnic institution, we focus on offering both syllabus-oriented classes and job-oriented courses to equip students with the skills needed to excel in engineering fields and adapt to the latest technological developments.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Providing excellence in Engineering education, Fostering ethical values and a strong sense of responsibility among students and staff.</li>
+                                <li>Building a team of qualified, passionate faculty dedicated to delivering both curriculum based education and career oriented training.</li>
+                                <li>Developing and maintaining cutting edge infrastructure that supports innovation and hands on learning.</li>
+                            </ul>
+                        </td>
+                    </tr>
                 </table>
-                
-            </section>
-            </center>
-            
-
-        <section id="department-vision-mission" class="fadeIn" style="padding: 20px;">
-            <center>
-                <h2>Department Vision & Mission</h2>
-                <table style="align-content: center;">
-                    <tr><th>Vision</th><th>Mission</th></tr>
-                    <tr><td><ul><li>To provide a quality education to the students of Mechanical Engineering so as to make them employable and to enhance their technical skills.</li></ul>
-                    
-                    </td><td><ul><li>To educate students in understanding the concepts of Mechanical Engineering through effective Teaching - Learning methods.</li>
-                    <li>To improve employable skills, entrepreneurship skills and leadership qualities of students through Industry exposure.</li></ul></td></tr>
-                </table>
-                
-            </section>
             </center>
         </section>
 
- 
-       
+        <!-- Department Vision & Mission - Updated as per request with detailed mission points -->
+        <section id="department-vision-mission" class="fadeIn" style="padding: 20px;">
+            <center>
+                <h2>Department Vision & Mission</h2>
+                <table class="vision-mission-table" style="align-content: center;">
+                    <tr>
+                        <th>Vision</th>
+                        <th>Mission</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>To provide quality education to the students of Mechanical Engineering so as to make them employable and to enhance their technical skills.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>To cultivate dynamic learning environment that empowers students with fundamental and advanced mechanical Engineering knowledge.</li>
+                                <li>To foster creativity and equip them with hands on skills to meet real world challenges while upholding ethical standards and sustainable principles.</li>
+                                <li>To Support and promote excellence in teaching, research and innovation encouraging collaboration among faculty members and students.</li>
+                                <li>To develop and maintain the state of the art facilities, Laboratories and technological resources that enhance research and education.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </section>
     </main>
 
     <!-- Footer Section -->
