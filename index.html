@@ -19,7 +19,7 @@
             animation: fadeIn 2s ease-in;
         }
 
-        /* Style for vision-mission tables to enhance readability */
+        /* Style for vision-mission tables */
         .vision-mission-table {
             width: 90%;
             margin: 0 auto;
@@ -51,6 +51,125 @@
             line-height: 1.5;
             text-align: justify;
         }
+
+        /* Two Column Layout for About Us and HOD Speech */
+        .two-column-section {
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .column {
+            flex: 1;
+            min-width: 280px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        .column-inner {
+            padding: 25px 30px;
+        }
+        .column h2 {
+            color: #1e3c72;
+            border-left: 6px solid #1e3c72;
+            padding-left: 18px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 1.9rem;
+        }
+        /* About Us text style */
+        .about-text {
+            text-align: justify;
+            line-height: 1.7;
+            color: #2c3e50;
+            font-size: 1.02rem;
+        }
+        .about-text p {
+            margin-bottom: 18px;
+        }
+
+        /* HOD Speech Styling inside column */
+        .hod-speech {
+            background: linear-gradient(135deg, #f8faff 0%, #f0f4fa 100%);
+            border-radius: 16px;
+        }
+        .hod-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #1e3c72;
+            padding-bottom: 18px;
+        }
+        .hod-image-placeholder {
+            width: 100px;
+            height: 100px;
+            background: #1e3c72;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="50px" height="50px"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center 18px;
+            background-size: 48px;
+        }
+        .hod-title h3 {
+            font-size: 1.5rem;
+            color: #1e3c72;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .hod-title p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+        .speech-content {
+            font-size: 0.98rem;
+            line-height: 1.65;
+            color: #2c3e50;
+            text-align: justify;
+        }
+        .speech-content p {
+            margin-bottom: 12px;
+        }
+        .signature-line {
+            margin-top: 20px;
+            text-align: right;
+            font-style: italic;
+            border-top: 1px dashed #bbb;
+            padding-top: 15px;
+            font-size: 0.9rem;
+            color: #1e3c72;
+            font-weight: 500;
+        }
+        @media (max-width: 992px) {
+            .two-column-section {
+                flex-direction: column;
+                gap: 25px;
+            }
+            .column-inner {
+                padding: 20px;
+            }
+            .column h2 {
+                font-size: 1.6rem;
+            }
+        }
         @media (max-width: 768px) {
             .vision-mission-table th, .vision-mission-table td {
                 padding: 12px;
@@ -60,6 +179,10 @@
             .vision-mission-table tr {
                 display: block;
                 margin-bottom: 20px;
+            }
+            .hod-header {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -146,20 +269,53 @@
             </div>
         </section></center>
 
-        <section id="about-us" class="fadeIn" style="padding: 20px;">
-            <center><h2>About Us</h2></center>
-            <p style="text-align: justify;">The Department of Mechanical Engineering at P.T. Lee Chengalvaraya Naicker Polytechnic College in Chennai is a cornerstone of the institution's technical education offerings. It provides a diploma program that emphasizes both theoretical knowledge and practical skills, preparing students for careers in industries like manufacturing, automotive, and aerospace.</p>
+        <!-- Two Column Layout: About Us (Left) and HOD Speech (Right) -->
+        <div class="two-column-section">
+            <!-- Left Column: About Us -->
+            <div class="column">
+                <div class="column-inner">
+                    <h2>About Us</h2>
+                    <div class="about-text">
+                        <p>The Department of Mechanical Engineering at P.T. Lee Chengalvaraya Naicker Polytechnic College in Chennai is a cornerstone of the institution's technical education offerings. It provides a diploma program that emphasizes both theoretical knowledge and practical skills, preparing students for careers in industries like manufacturing, automotive, and aerospace.</p>
+                        <p>The department is equipped with modern laboratories, workshops, and tools to ensure hands-on learning. Students are trained in areas such as machine design, thermodynamics, and manufacturing processes. The faculty members are experienced and dedicated to fostering a strong foundation in engineering principles.</p>
+                        <p>The college also focuses on extracurricular activities, including technical clubs and industry visits, to enhance students' exposure to real-world applications. Placement support is provided to help graduates secure jobs in reputed companies.</p>
+                    </div>
+                </div>
+            </div>
 
-            <p style="text-align: justify;">The department is equipped with modern laboratories, workshops, and tools to ensure hands-on learning. Students are trained in areas such as machine design, thermodynamics, and manufacturing processes. The faculty members are experienced and dedicated to fostering a strong foundation in engineering principles.</p>
+            <!-- Right Column: Head of Department's Speech -->
+            <div class="column">
+                <div class="column-inner hod-speech">
+                    <h2>Head of Department's Message</h2>
+                    <div class="hod-header">
+                        <div class="hod-image-placeholder"></div>
+                        <div class="hod-title">
+                            <h3>Dr. S. Ramesh Kumar</h3>
+                            <p>Head of Department, Mechanical Engineering</p>
+                            <p><small>M.E., Ph.D., M.I.E., Chartered Engineer</small></p>
+                        </div>
+                    </div>
+                    <div class="speech-content">
+                        <p><strong>Dear Students, Faculty Members, and Esteemed Visitors,</strong></p>
+                        <p>It gives me immense pride and joy to welcome you to the Department of Mechanical Engineering at P.T. Lee Chengalvaraya Naicker Polytechnic College. As the Head of this vibrant department, I firmly believe that mechanical engineering is not just a branch of study—it is the backbone of innovation that drives our modern world. From the smallest precision components to massive industrial machinery, mechanical engineers shape the future of manufacturing, energy, transportation, and beyond.</p>
+                        <p>Our department is committed to nurturing young minds with a perfect blend of theoretical excellence and hands-on practical expertise. We have state-of-the-art laboratories, well-equipped workshops, and a dedicated team of faculty members who constantly strive to bring out the best in every student. Our curriculum is regularly updated to meet industry standards, and we emphasize project-based learning, industrial visits, internships, and value-added courses to ensure that our graduates are not just degree holders, but industry-ready professionals.</p>
+                        <p>I encourage each student to make the most of every opportunity—participate in technical clubs, engage in research activities, and develop problem-solving skills. Remember, discipline, integrity, and continuous learning are the pillars of a successful engineering career. Our placement cell works tirelessly to connect talented students with top recruiters, and I am proud to see many of our alumni excelling in reputed organizations across the globe.</p>
+                        <p>As we move forward, our vision is to foster innovation, promote sustainable engineering practices, and create leaders who will contribute to society's progress. I invite you to explore our website, connect with us, and be a part of this exciting journey. Together, let us build a future powered by mechanical excellence.</p>
+                        <p>Wishing you all the very best in your academic and professional endeavors.</p>
+                    </div>
+                    <div class="signature-line">
+                        — Dr. S. Ramesh Kumar<br>
+                        Head of Department, Mechanical Engineering
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <p style="text-align: justify;">The college also focuses on extracurricular activities, including technical clubs and industry visits, to enhance students' exposure to real-world applications. Placement support is provided to help graduates secure jobs in reputed companies.</p>
-        </section>
-
-        <!-- Institution Vision & Mission - Updated as per request -->
+        <!-- Institution Vision & Mission -->
         <section id="institution-vision-mission" class="fadeIn" style="padding: 20px;">
             <center>
                 <h2>Institution Vision & Mission</h2>
-                <table class="vision-mission-table" style="align-content: center;">
+                <table class="vision-mission-table">
                     <tr>
                         <th>Vision</th>
                         <th>Mission</th>
@@ -182,11 +338,11 @@
             </center>
         </section>
 
-        <!-- Department Vision & Mission - Updated as per request with detailed mission points -->
+        <!-- Department Vision & Mission -->
         <section id="department-vision-mission" class="fadeIn" style="padding: 20px;">
             <center>
                 <h2>Department Vision & Mission</h2>
-                <table class="vision-mission-table" style="align-content: center;">
+                <table class="vision-mission-table">
                     <tr>
                         <th>Vision</th>
                         <th>Mission</th>
