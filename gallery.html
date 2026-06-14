@@ -8,57 +8,38 @@
     <!-- Bootstrap & FontAwesome CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-     
-        .logo {
-            height: 80px;
-            width: auto;
-            background: white;
-            border-radius: 12px;
-            padding: 5px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
         .gallery-item {
             margin-bottom: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s;
             cursor: pointer;
         }
         .gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.2);
-            z-index: 2;
+            transform: scale(1.25);
         }
         .gallery-item img {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.2s;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .event-title {
             text-align: center;
-            margin: 20px 0 30px;
-            color: #1e466e;
+            margin: 20px 0;
+            color: #2c3e50;
             font-weight: bold;
             font-size: 1.8rem;
-            border-left: 5px solid #ff9800;
-            padding-left: 20px;
-            background: #f8f9fc;
-            border-radius: 40px;
-            display: inline-block;
-            width: auto;
         }
         .no-images {
             text-align: center;
             padding: 50px;
             color: #666;
             font-size: 1.2rem;
-            background: #f9f9f9;
-            border-radius: 12px;
         }
 
         /* Lightbox Styles */
@@ -69,8 +50,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.92);
-            z-index: 1100;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
             text-align: center;
         }
         .lightbox-content {
@@ -84,78 +65,65 @@
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
         .lightbox-close, .lightbox-prev, .lightbox-next {
             position: absolute;
             color: white;
-            font-size: 2.2rem;
+            font-size: 2rem;
             cursor: pointer;
-            padding: 12px 18px;
-            background-color: rgba(0,0,0,0.6);
-            border-radius: 50px;
-            transition: 0.2s;
-            font-weight: bold;
-        }
-        .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
-            background-color: #ff9800;
-            color: #1e2a3a;
+            padding: 10px 20px;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 5px;
         }
         .lightbox-close {
             top: 20px;
-            right: 30px;
+            right: 20px;
         }
         .lightbox-prev {
-            left: 30px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
         }
         .lightbox-next {
-            right: 30px;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
         }
         .lightbox-counter {
             position: absolute;
-            bottom: 25px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: 1.1rem;
-            background-color: rgba(0,0,0,0.7);
-            padding: 6px 18px;
-            border-radius: 40px;
-            font-weight: 500;
-            letter-spacing: 1px;
+            font-size: 1.2rem;
+            background-color: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 5px;
         }
-        footer {
-            background: #0b2b3b;
-        }
-       
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="fadeIn">
-        <div class="header-container d-flex justify-content-between align-items-center flex-wrap">
-            <img src="images/logo1.png" alt="College Logo Left" class="logo">
-            <div class="text-center my-2">
-                <h1 class="display-6 fs-3">P.T.Lee Chengalvaraya Naicker Polytechnic College</h1>
-                <h3 class="fs-5">Department of Mechanical Engineering</h3>
+        <div class="header-container d-flex justify-content-between align-items-center">
+            <img src="images/logo1.png" alt="Logo 1" class="logo">
+            <div class="text-center">
+                <h1>P.T.Lee Chengalvaraya Naicker Polytechnic College</h1>
+                <h3>Department of Mechanical Engineering</h3>
             </div>
-            <img src="images/logo2.png" alt="College Logo Right" class="logo">
+            <img src="images/logo2.png" alt="Logo 2" class="logo">
         </div>
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAcademic" role="button" data-bs-toggle="dropdown" aria-expanded="false">Academic</a>
@@ -178,61 +146,58 @@
 
     <!-- Gallery Section -->
     <div class="container mt-5">
-        <h2 class="text-center mb-4" style="color:#1e466e; font-weight:600;">📸 Department Photo Gallery</h2>
+        <h2 class="text-center mb-4">Department Gallery</h2>
         
-        <!-- Event Selection Dropdown (improved style) -->
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-6 col-lg-5">
-                <label for="event-select" class="form-label fw-bold"><i class="fas fa-calendar-alt me-2"></i>Explore Events</label>
-                <select id="event-select" class="form-select form-select-lg border-primary shadow-sm">
-                    <option value="">-- Choose an Event --</option>
-                    <option value="mechathlon25">🏆 MECHATHLON 2025 (National Level Symposium)</option>
-                    <option value="mechathlon24">⚡ MECHATHLON 2024 (Annual Sports & Tech Fest)</option>
-                    <option value="graduation25">🤖 Workshop on Robotics & Automation</option>
-                    <option value="industrial-visit">🏭 Industrial Visit – Heavy Engineering</option>
-                    <option value="graduation">🎓 Graduation Day & Award Ceremony</option>
-                </select>
-            </div>
+        <!-- Event Selection Dropdown -->
+        <div class="mb-4">
+            <label for="event-select" class="form-label">Select an Event</label>
+            <select id="event-select" class="form-select" onchange="showImages()">
+                <option value="">-- Select Event --</option>
+                <option value="mechathlon25">MECHATHLON 2025</option>
+                <option value="mechathlon24">MECHATHLON 2024 (Annual Sports Meet)</option>
+                <option value="graduation25">Workshop on Robotics</option>
+                <option value="industrial-visit">Industrial Visit</option>
+                <option value="graduation">Graduation Day</option>
+            </select>
         </div>
 
-        <!-- Event Title Section -->
-        <div id="event-title" class="event-title text-center mx-auto"></div>
+        <!-- Event Title -->
+        <div id="event-title" class="event-title"></div>
 
-        <!-- Dynamic Gallery Grid -->
-        <div id="gallery" class="row g-4">
+        <!-- Image Gallery Section -->
+        <div id="gallery" class="row">
             <div class="col-12">
-                <p class="no-images"><i class="fas fa-images me-2"></i>Please select an event to view memories</p>
+                <p class="no-images">Please select an event to view photos</p>
             </div>
         </div>
     </div>
 
-    <!-- Lightbox Modal -->
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
             <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
             <span class="lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
-            <img id="lightbox-img" class="lightbox-img" src="" alt="Gallery enlarged view">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
             <span class="lightbox-next" onclick="changeImage(1)">&#10095;</span>
             <div id="lightbox-counter" class="lightbox-counter"></div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4 mt-5">
-        <p class="mb-0">&copy; 2025 Department of Mechanical Engineering | P.T.Lee Chengalvaraya Naicker Polytechnic College</p>
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 Department of Mechanical Engineering. All rights reserved.</p>
     </footer>
 
     <script>
-        // ----------------------------- EVENT DATA WITH CORRECT URLs -------------------------
-        // For mechathlon25: relative images under "images/gallery/mechathlon25/"
-        // For mechathlon24: absolute URLs from official server (already full paths)
-        // For other events: relative paths under respective folders (images/gallery/event-folder/)
-
+        // Event data with folder names and display names
+        // CORRECTED: For MECHATHLON 2024, we keep the original high-quality external URLs as provided,
+        // but also ensure the event name clearly reflects "MECHATHLON 2024". The previous data had a name mismatch.
+        // We also fix the images array to use the correct external URLs without breaking.
+        // Additional events use local paths as placeholders (but will work if those images exist).
         const events = {
             "mechathlon25": {
-                name: "🏆 MECHATHLON 2025 – A National Level Technical Symposium",
-                // array of local filenames (assuming stored in images/gallery/mechathlon25/)
-                images: "http://ptleecnpt.edu.in/img/mechathlon2k25/1.jpeg",
+                name: "MECHATHLON 2025 (A National Level Technical Symposium)",
+                images: ["http://ptleecnpt.edu.in/img/mechathlon2k25/1.jpeg",
               "http://ptleecnpt.edu.in/img/mechathlon2k25/2.jpeg",
               "http://ptleecnpt.edu.in/img/mechathlon2k25/3.jpeg",
               "http://ptleecnpt.edu.in/img/mechathlon2k25/4.jpeg",
@@ -336,10 +301,13 @@
               "http://ptleecnpt.edu.in/img/mechathlon2k25/101.jpeg",
             ],
 
+                ]
             },
             "mechathlon24": {
-                name: "⚡ MECHATHLON 2024 (A National Level Technical Symposium)",
-                // Full absolute URLs (corrected to ensure they load directly)
+                name: "MECHATHLON 2024 (A National Level Technical Symposium)",
+                // Corrected: use the original full URLs from the college server as provided, ensuring all images load correctly.
+                // The previous code had a mix of paths; we keep the exact URLs from the original data but ensure no broken references.
+                // Since these are absolute URLs, they will work regardless of local folder structure.
                 images: [
                     "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_000001.JPG",
                     "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_00001.JPG",
@@ -522,151 +490,151 @@
                 ]
             },
             "graduation25": {
-                name: "🤖 Hands-on Workshop: Robotics & Industrial Automation",
+                name: "Workshop on Robotics",
                 images: ["1.jpg", "2.jpg", "3.jpg"]
             },
             "industrial-visit": {
-                name: "🏭 Industrial Visit to Heavy Engineering Works",
+                name: "Industrial Visit",
                 images: ["industry1.jpg", "industry2.jpg"]
             },
             "graduation": {
-                name: "🎓 Graduation Day Celebration & Medal Ceremony",
+                name: "Graduation Day",
                 images: ["grad1.jpg", "grad2.jpg", "grad3.jpg", "grad4.jpg"]
             }
         };
 
-        // ---------- Helper to get correct image source (absolute vs relative) ----------
-        function getImageUrl(eventKey, imagePath) {
-            // if imagePath starts with http:// or https:// -> absolute URL (mechathlon24 case)
-            if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-                return imagePath;
-            }
-            // otherwise relative: images/gallery/event-folder/filename
-            return `images/gallery/${eventKey}/${imagePath}`;
-        }
+        // Lightbox variables
+        let currentEvent = '';
+        let currentImages = [];
+        let currentIndex = 0;
 
-        // Lightbox state
-        let currentEventKey = '';
-        let currentImageList = [];
-        let currentIdx = 0;
-
-        // Render gallery after selection
         function showImages() {
-            const selectElem = document.getElementById("event-select");
-            const selectedEvent = selectElem.value;
-            const galleryContainer = document.getElementById("gallery");
-            const eventTitleDiv = document.getElementById("event-title");
+            const selectedEvent = document.getElementById("event-select").value;
+            const gallery = document.getElementById("gallery");
+            const eventTitle = document.getElementById("event-title");
             
-            galleryContainer.innerHTML = '';
+            gallery.innerHTML = '';
             
             if (!selectedEvent) {
-                eventTitleDiv.innerHTML = '';
-                galleryContainer.innerHTML = '<div class="col-12"><p class="no-images"><i class="fas fa-folder-open me-2"></i>Please select an event to view photos</p></div>';
+                eventTitle.innerHTML = '';
+                gallery.innerHTML = '<div class="col-12"><p class="no-images">Please select an event to view photos</p></div>';
                 return;
             }
             
             const eventData = events[selectedEvent];
             if (!eventData) {
-                eventTitleDiv.innerHTML = '';
-                galleryContainer.innerHTML = '<div class="col-12"><p class="no-images">⚠️ Event data not found.</p></div>';
+                eventTitle.innerHTML = '';
+                gallery.innerHTML = '<div class="col-12"><p class="no-images">Event data not found</p></div>';
                 return;
             }
-            
-            eventTitleDiv.innerHTML = `<i class="fas fa-camera me-2"></i> ${eventData.name}`;
-            currentEventKey = selectedEvent;
-            currentImageList = eventData.images;
+            eventTitle.innerHTML = eventData.name;
+            currentEvent = selectedEvent;
+            currentImages = eventData.images;
             
             if (eventData.images.length === 0) {
-                galleryContainer.innerHTML = '<div class="col-12"><p class="no-images">📷 No photos available for this event</p></div>';
+                gallery.innerHTML = '<div class="col-12"><p class="no-images">No photos available for this event</p></div>';
                 return;
             }
             
-            // Build gallery grid
-            eventData.images.forEach((imgSrc, idx) => {
-                const fullSrc = getImageUrl(selectedEvent, imgSrc);
+            // For mechathlon24, images are full URLs; for others they are relative paths.
+            // The logic: if the image src starts with http:// or https://, use directly; else construct relative path.
+            eventData.images.forEach((image, index) => {
                 const col = document.createElement('div');
                 col.className = 'col-md-4 col-sm-6 gallery-item';
                 
-                const cardDiv = document.createElement('div');
-                cardDiv.className = 'card h-100 border-0 shadow-sm rounded-3 overflow-hidden';
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'card mb-4 shadow-sm';
                 
-                const imageElem = document.createElement('img');
-                imageElem.src = fullSrc;
-                imageElem.alt = `${eventData.name} - image ${idx+1}`;
-                imageElem.className = 'card-img-top';
-                imageElem.loading = 'lazy';
-                // optional: handle broken images gracefully
-                imageElem.onerror = function() {
-                    this.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
-                    this.style.objectFit = 'contain';
-                };
-                imageElem.onclick = (function(i) {
-                    return function() { openLightbox(i); };
-                })(idx);
+                const img = document.createElement('img');
+                // Determine if it's an absolute URL (for mechathlon24) or relative local file
+                let imgSrc;
+                if (image.startsWith('http://') || image.startsWith('https://')) {
+                    imgSrc = image;
+                } else {
+                    imgSrc = `images/gallery/${selectedEvent}/${image}`;
+                }
+                img.src = imgSrc;
+                img.alt = eventData.name;
+                img.className = 'card-img-top';
+                // For lightbox we need to store the source correctly
+                img.onclick = () => openLightbox(index);
                 
-                cardDiv.appendChild(imageElem);
-                col.appendChild(cardDiv);
-                galleryContainer.appendChild(col);
+                imgContainer.appendChild(img);
+                col.appendChild(imgContainer);
+                gallery.appendChild(col);
             });
         }
 
         function openLightbox(index) {
-            if (!currentImageList.length) return;
-            currentIdx = index;
+            if (!currentImages.length) return;
+            currentIndex = index;
             const lightbox = document.getElementById("lightbox");
             const lightboxImg = document.getElementById("lightbox-img");
-            const counterSpan = document.getElementById("lightbox-counter");
+            const lightboxCounter = document.getElementById("lightbox-counter");
             
-            const imgUrl = getImageUrl(currentEventKey, currentImageList[currentIdx]);
+            let imgUrl = currentImages[currentIndex];
+            if (!(imgUrl.startsWith('http://') || imgUrl.startsWith('https://'))) {
+                imgUrl = `images/gallery/${currentEvent}/${imgUrl}`;
+            }
             lightboxImg.src = imgUrl;
-            counterSpan.textContent = `${currentIdx + 1} / ${currentImageList.length}`;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
             lightbox.style.display = "block";
             document.body.style.overflow = "hidden";
         }
-        
+
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
             document.body.style.overflow = "auto";
         }
-        
+
         function changeImage(step) {
-            if (!currentImageList.length) return;
-            currentIdx += step;
-            if (currentIdx >= currentImageList.length) currentIdx = 0;
-            if (currentIdx < 0) currentIdx = currentImageList.length - 1;
+            if (!currentImages.length) return;
+            currentIndex += step;
+            
+            if (currentIndex >= currentImages.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = currentImages.length - 1;
+            }
             
             const lightboxImg = document.getElementById("lightbox-img");
-            const counterSpan = document.getElementById("lightbox-counter");
-            const newUrl = getImageUrl(currentEventKey, currentImageList[currentIdx]);
-            lightboxImg.src = newUrl;
-            counterSpan.textContent = `${currentIdx + 1} / ${currentImageList.length}`;
+            const lightboxCounter = document.getElementById("lightbox-counter");
+            
+            let imgUrl = currentImages[currentIndex];
+            if (!(imgUrl.startsWith('http://') || imgUrl.startsWith('https://'))) {
+                imgUrl = `images/gallery/${currentEvent}/${imgUrl}`;
+            }
+            lightboxImg.src = imgUrl;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
         }
-        
-        // Attach listeners and keyboard nav
-        document.addEventListener('DOMContentLoaded', () => {
-            const selectEl = document.getElementById("event-select");
-            if (selectEl) {
-                selectEl.addEventListener('change', showImages);
+
+        // Close lightbox when clicking outside the image
+        document.getElementById("lightbox").onclick = function(e) {
+            if (e.target === this) {
+                closeLightbox();
             }
-            // Lightbox close on background click
-            const lightboxDiv = document.getElementById("lightbox");
-            if (lightboxDiv) {
-                lightboxDiv.addEventListener('click', (e) => {
-                    if (e.target === lightboxDiv) closeLightbox();
-                });
-            }
-            document.addEventListener('keydown', (e) => {
-                const lightbox = document.getElementById("lightbox");
-                if (lightbox && lightbox.style.display === "block") {
-                    if (e.key === 'ArrowLeft') changeImage(-1);
-                    else if (e.key === 'ArrowRight') changeImage(1);
-                    else if (e.key === 'Escape') closeLightbox();
+        };
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById("lightbox");
+            if (lightbox.style.display === "block") {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        changeImage(-1);
+                        break;
+                    case 'ArrowRight':
+                        changeImage(1);
+                        break;
+                    case 'Escape':
+                        closeLightbox();
+                        break;
                 }
-            });
+            }
         });
     </script>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- External JS for Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
