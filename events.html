@@ -7,7 +7,53 @@
     <link rel="shortcut icon" href="images/logo1.png" type="image/x-icon">
     <!-- Bootstrap & FontAwesome CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional inline styles to ensure consistent spacing, but respecting original CSS */
+        .event-year-heading {
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            border-left: 5px solid #0d6efd;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .list-group-item strong {
+            color: #0a58ca;
+        }
+        .event-badge {
+            font-size: 0.75rem;
+            background-color: #198754;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+        .pdf-link {
+            font-size: 0.8rem;
+            margin-left: 15px;
+            color: #6c757d;
+            text-decoration: none;
+            border-bottom: 1px dotted #6c757d;
+        }
+        .pdf-link:hover {
+            color: #0d6efd;
+            border-bottom-color: #0d6efd;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 3rem;
+        }
+        .event-ref {
+            font-size: 0.75rem;
+            display: inline-block;
+            margin-left: 12px;
+        }
+    </style>
 </head>
 <body>
    <!-- Header -->
@@ -43,7 +89,7 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="faculties.html">Faculties</a></li>
                 <li class="nav-item"><a class="nav-link" href="results.html">Results</a></li>
-                <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                <li class="nav-item"><a class="nav-link active" href="events.html">Events</a></li>
                 <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="placement.html">Placement</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
@@ -53,20 +99,207 @@
 </nav>
 
     <main class="container mt-5">
-        <h2>Upcoming Events</h2>
-        <ul class="list-group">
-            <a href="http://ptleecnpt.edu.in" target="_blank"><li class="list-group-item">Seminar on "Advancements in Mechanical Engineering" - 25th March 2025</li></a>
-            <a href="http://ptleecnpt.edu.in" target="_blank"><li class="list-group-item">Seminar on "Advancements in Mechanical Engineering" - 25th March 2025</li></a>
-            <!-- Add more events as necessary -->
-        </ul>
-    </main>
-    <main class="container mt-5">
-        <h2>Past Events</h2>
-        <ul class="list-group">
-            <a href="http://ptleecnpt.edu.in" target="_blank"><li class="list-group-item">Seminar on "Advancements in Mechanical Engineering" - 25th March 2025</li></a>
-            <a href="http://ptleecnpt.edu.in" target="_blank"><li class="list-group-item">Seminar on "Advancements in Mechanical Engineering" - 25th March 2025</li></a>
-            <!-- Add more events as necessary -->
-        </ul>
+        <h2 class="mb-4">Department of Mechanical Engineering – Events <i class="fas fa-cogs"></i></h2>
+        
+
+        <!-- Upcoming Events Placeholder -->
+        <div class="alert alert-info mt-4" role="alert">
+            <i class="bi bi-calendar-event"></i> No upcoming events currently scheduled. Please check back later for updates.
+        </div>
+
+        <!-- Past Events Organized Chronologically (Recent first) with corresponding PDF links from given file list -->
+        <h3 class="event-year-heading">2026 Events</h3>
+        <div class="list-group mb-4">
+            
+            <div class="list-group-item">
+                <strong>Industrial Visit | 10.02.2026</strong> – Second-year Mechanical students visited Integral Coach Factory (ICF).
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%207%20Issue%201%20-%20Apr%202026_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 7 Issue 1 (Apr 2026)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Cricket Tournament | 03-04.03.2026</strong> – Mechanical students won First Prize at Jaya Memorial Inter-College Cricket tournament.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%207%20Issue%201%20-%20Apr%202026_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 7 Issue 1 (Apr 2026)</a>
+                <span class="event-badge">Sports</span>
+            </div>
+            <div class="list-group-item">
+                <strong>IPAA Sports Meet | Feb-Mar 2026</strong> – Mechanical students secured 3rd place in Cricket, 4th in Shuttle Badminton.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%207%20Issue%201%20-%20Apr%202026_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 7 Issue 1 (Apr 2026)</a>
+                <span class="event-badge">Sports</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Women’s Day Celebration | 07.03.2026</strong> – National Women’s Day celebrated; Mechanical staff and students participated.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%207%20Issue%201%20-%20Apr%202026_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 7 Issue 1 (Apr 2026)</a>
+                <span class="event-badge">Cultural</span>
+            </div>
+        </div>
+
+        <h3 class="event-year-heading">2025 Events</h3>
+        <div class="list-group mb-4">
+            <div class="list-group-item">
+                <strong>Industrial Visit | 19.12.2025</strong> – Third-year Mechanical at JSE ENGINEERING.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/oct%202025_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 6 Issue 1 (Oct 2025)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit | 09-10.09.2025</strong> – Second-year Mechanical B-section visited TCMPFT LTD, Ambattur.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/oct%202025_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 6 Issue 1 (Oct 2025)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit to L&T Metro | 29-30.08.2025</strong> – Third-year Mechanical visited L&T Metro project site, Kolappancheri.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/oct%202025_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 6 Issue 1 (Oct 2025)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Placement Training (IBM) | 02-04.07.2025</strong> – Final year Mechanical students attended placement training.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/oct%202025_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 6 Issue 1 (Oct 2025)</a>
+                <span class="event-badge">Placement Drive</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Career Guidance | 30.07.2025</strong> – Sambhav Foundation conducted session for final year students.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/oct%202025_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 6 Issue 1 (Oct 2025)</a>
+                <span class="event-badge">Guidance</span>
+            </div>
+        </div>
+
+        <h3 class="event-year-heading">2024 Events</h3>
+        <div class="list-group mb-4">
+            <div class="list-group-item">
+                <strong>Industrial Visit | 16.02.2024</strong> – II Year Mechanical A section visited North Chennai Thermal Power Station.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%205%20Issue%201%20Apr%202024.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 5 Issue 1 (Apr 2024)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit | 19.02.2024</strong> – II Year Mechanical B section visited North Chennai Thermal Power Station.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%205%20Issue%201%20Apr%202024.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 5 Issue 1 (Apr 2024)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit to NIOT | 23.02.2024</strong> – Third-year Mechanical visited National Institute of Ocean Technology, Pallikaranai.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%205%20Issue%201%20Apr%202024.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 5 Issue 1 (Apr 2024)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Mechathalon 2024 Symposium | 15.03.2024</strong> – National Level Technical Symposium, Chief Guest Thiru Ashokraj Vadivel.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%205%20Issue%201%20Apr%202024.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 5 Issue 1 (Apr 2024)</a>
+                <span class="event-badge">Symposium</span>
+            </div>
+            <div class="list-group-item">
+                <strong>CNC Technologies Workshop | 06.03.2024</strong> – State level workshop at DMW CNC Centre.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%205%20Issue%201%20Apr%202024.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 5 Issue 1 (Apr 2024)</a>
+                <span class="event-badge">Workshop</span>
+            </div>
+            <div class="list-group-item">
+                <strong>One Day - One Alumni Lecture | 23.01.2024</strong> – R.N.R. Amaran (1980 DME alumnus) on "5S Technologies".
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%205%20Issue%201%20Apr%202024.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 5 Issue 1 (Apr 2024)</a>
+                <span class="event-badge">Alumni Lecture</span>
+            </div>
+        </div>
+
+        <h3 class="event-year-heading">2023 Events</h3>
+        <div class="list-group mb-4">
+            <div class="list-group-item">
+                <strong>Industrial Visit | 20.06.2023</strong> – II Year A section to Gopal Naicker Foundries.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%204%20Issue%202%202023.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 4 Issue 2 (Sep 2023)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit | 21.06.2023</strong> – II Year B section to Gopal Naicker Foundries.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%204%20Issue%202%202023.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 4 Issue 2 (Sep 2023)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit to CVRDE | 22.07.2023</strong> – II & III year students visited defence R&D centre, Avadi.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%204%20Issue%202%202023.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 4 Issue 2 (Sep 2023)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Naan Mudhalvan FDP | 24-28.07.2023</strong> – Mr. R.Manickam attended Industry 4.0 FDP.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%204%20Issue%202%202023.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 4 Issue 2 (Sep 2023)</a>
+                <span class="event-badge">FDP</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Mechathalon'23 | 17.03.2023</strong> – National Level Technical Seminar with Chief Guest from Ashok Leyland.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%203%20Issue%202%202023.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 3 Issue 2 (Mar 2023)</a>
+                <span class="event-badge">National Seminar</span>
+            </div>
+        </div>
+
+        <h3 class="event-year-heading">2019 - 2022 Events</h3>
+        <div class="list-group mb-4">
+            <div class="list-group-item">
+                <strong>Second National Conference NCRDMEMT 2019 | 08.03.2019</strong> – Keynote by Prof. Dr. Markus D. Rehfeldt (Germany).
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%202%20issue%202%20Apr%202019.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 2 Issue 2 (Apr 2019)</a>
+                <span class="event-badge">Conference</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Ford India Car Donation | 2019</strong> – Ford India donated latest car for student exposure.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%202%20issue%202%20Apr%202019.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 2 Issue 2 (Apr 2019)</a>
+                <span class="event-badge">Industry Partnership</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit to ICF | 19.02.2019</strong> – IV semester Mechanical students.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%202%20issue%202%20Apr%202019.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 2 Issue 2 (Apr 2019)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Technology Business Incubator Launch | 01.10.2019</strong> – TBI cell established; bakery production training for students.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%203%20issue%201%20Nov%202019.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 3 Issue 1 (Nov 2019)</a>
+                <span class="event-badge">Incubation</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit to MTC Workshop | 10.03.2020</strong> – Second Year Mechanical visited MTC workshop.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Volume%203%20Issue%202%202023.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 3 Issue 2 (Mar 2023)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+        </div>
+
+        <h3 class="event-year-heading">2017 - 2018 Events</h3>
+        <div class="list-group mb-4">
+            <div class="list-group-item">
+                <strong>Industrial Visit to Gopal Naicker Foundries | 13.07.2018</strong> – II year Mechanical students (real-time foundry exposure).
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%202%20issue%201%20Oct%202018.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 2 Issue 1 (Oct 2018)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Industrial Visit to ICF | 27.07.2018</strong> – III year Mechanical students visited Integral Coach Factory.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%202%20issue%201%20Oct%202018.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 2 Issue 1 (Oct 2018)</a>
+                <span class="event-badge">Industrial Visit</span>
+            </div>
+            <div class="list-group-item">
+                <strong>National Conference NCRDMMET 2018 | 02.03.2018</strong> – With international speaker Prof. Dr. Markus D. Rehfeldt.
+                <a href="https://ptleecnpt.edu.in/pdf/Newsletter/Vol%201%20issue%202%20March%202018_compressed.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 1 Issue 2 (Mar 2018)</a>
+                <span class="event-badge">Conference</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Guest Lecture on Automobile Strategies | 27.07.2017</strong> – Er. S. Permanand, Brakes India Ltd.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%201%20Issue%201%20Sep%202017.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Volume 1 Issue 1 (Sep 2017)</a>
+                <span class="event-badge">Guest Lecture</span>
+            </div>
+            <div class="list-group-item">
+                <strong>3D Printing Seminar | 08.08.2017</strong> – Conducted by Diagonal CAD Systems for III year Mechanical.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%201%20Issue%201%20Sep%202017.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 1 Issue 1 (Sep 2017)</a>
+                <span class="event-badge">Seminar</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Mahindra Pride School Training | Aug 2017</strong> – "Autotech Workshop" hands-on training.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%201%20Issue%201%20Sep%202017.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 1 Issue 1 (Sep 2017)</a>
+                <span class="event-badge">Training</span>
+            </div>
+            <div class="list-group-item">
+                <strong>Engineer's Day Celebration | 15.09.2017</strong> – Talks on Entrepreneurship & Interview skills.
+                <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/Vol%201%20Issue%201%20Sep%202017.pdf" target="_blank" class="pdf-link"><i class="fas fa-file-pdf"></i> Vol 1 Issue 1 (Sep 2017)</a>
+                <span class="event-badge">Celebration</span>
+            </div>
+        </div>
+
+        <!-- Additional Trust newsletters references for broader institutional context -->
+        <div class="alert alert-secondary mt-3" role="alert">
+            <i class="fas fa-link"></i> <strong>Source Key:</strong> Events are compiled from official newsletters of P.T.Lee Chengalvaraya Naicker Polytechnic College. PDF references include <strong>C.N. Trust Volumes, Department Newsletters (2017-2026)</strong> as per the college repository. For details on trust administration, founder's will, and property details, refer to <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/C.N.Trust%20Vol%202%20Issue%201-%202025.pdf" target="_blank">C.N. Trust Vol 2 Issue 1 (2025)</a>, <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/CN%20TRUST.pdf" target="_blank">C.N. Trust Vol 2 Issue 1 (2024)</a>, and <a href="https://ptleecnpt.edu.in/pdf/NewsLetter/trsut%20Volume%201%20Issue%203.pdf" target="_blank">Trust Vol 1 Issue 3 (2023)</a>.
+        </div>
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-calendar-alt"></i> For the complete list of departmental activities (including placement drives, alumni meets, and other branches), please refer to the respective newsletters. This page exclusively focuses on <strong>Mechanical Engineering Department</strong> events with direct source references.
+        </div>
     </main>
 
     <!-- Footer Section -->
