@@ -8,38 +8,67 @@
     <!-- Bootstrap & FontAwesome CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        /* header styles (matching original) */
+        header {
+            background: linear-gradient(135deg, #0b2b3b, #1a4a6f);
+            color: white;
+            padding: 15px 0;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            height: 80px;
+            width: auto;
+            background: white;
+            border-radius: 12px;
+            padding: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
         .gallery-item {
             margin-bottom: 20px;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
         .gallery-item:hover {
-            transform: scale(1.25);
+            transform: scale(1.03);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+            z-index: 2;
         }
         .gallery-item img {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.2s;
         }
         .event-title {
             text-align: center;
-            margin: 20px 0;
-            color: #2c3e50;
+            margin: 20px 0 30px;
+            color: #1e466e;
             font-weight: bold;
             font-size: 1.8rem;
+            border-left: 5px solid #ff9800;
+            padding-left: 20px;
+            background: #f8f9fc;
+            border-radius: 40px;
+            display: inline-block;
+            width: auto;
         }
         .no-images {
             text-align: center;
             padding: 50px;
             color: #666;
             font-size: 1.2rem;
+            background: #f9f9f9;
+            border-radius: 12px;
         }
 
         /* Lightbox Styles */
@@ -50,8 +79,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.92);
+            z-index: 1100;
             text-align: center;
         }
         .lightbox-content {
@@ -65,65 +94,85 @@
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
         .lightbox-close, .lightbox-prev, .lightbox-next {
             position: absolute;
             color: white;
-            font-size: 2rem;
+            font-size: 2.2rem;
             cursor: pointer;
-            padding: 10px 20px;
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 5px;
+            padding: 12px 18px;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 50px;
+            transition: 0.2s;
+            font-weight: bold;
+        }
+        .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+            background-color: #ff9800;
+            color: #1e2a3a;
         }
         .lightbox-close {
             top: 20px;
-            right: 20px;
+            right: 30px;
         }
         .lightbox-prev {
-            left: 20px;
+            left: 30px;
             top: 50%;
             transform: translateY(-50%);
         }
         .lightbox-next {
-            right: 20px;
+            right: 30px;
             top: 50%;
             transform: translateY(-50%);
         }
         .lightbox-counter {
             position: absolute;
-            bottom: 20px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: 1.2rem;
-            background-color: rgba(0,0,0,0.5);
-            padding: 5px 15px;
-            border-radius: 5px;
+            font-size: 1.1rem;
+            background-color: rgba(0,0,0,0.7);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        footer {
+            background: #0b2b3b;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .logo { height: 50px; }
+            .event-title { font-size: 1.3rem; }
+            .lightbox-prev, .lightbox-next { font-size: 1.5rem; padding: 6px 12px; }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="fadeIn">
-        <div class="header-container d-flex justify-content-between align-items-center">
-            <img src="images/logo1.png" alt="Logo 1" class="logo">
-            <div class="text-center">
-                <h1>P.T.Lee Chengalvaraya Naicker Polytechnic College</h1>
-                <h3>Department of Mechanical Engineering</h3>
+        <div class="header-container d-flex justify-content-between align-items-center flex-wrap">
+            <img src="images/logo1.png" alt="College Logo Left" class="logo">
+            <div class="text-center my-2">
+                <h1 class="display-6 fs-3">P.T.Lee Chengalvaraya Naicker Polytechnic College</h1>
+                <h3 class="fs-5">Department of Mechanical Engineering</h3>
             </div>
-            <img src="images/logo2.png" alt="Logo 2" class="logo">
+            <img src="images/logo2.png" alt="College Logo Right" class="logo">
         </div>
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAcademic" role="button" data-bs-toggle="dropdown" aria-expanded="false">Academic</a>
@@ -146,369 +195,402 @@
 
     <!-- Gallery Section -->
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Department Gallery</h2>
+        <h2 class="text-center mb-4" style="color:#1e466e; font-weight:600;">📸 Department Photo Gallery</h2>
         
-        <!-- Event Selection Dropdown -->
-        <div class="mb-4">
-            <label for="event-select" class="form-label">Select an Event</label>
-            <select id="event-select" class="form-select" onchange="showImages()">
-                <option value="">-- Select Event --</option>
-                <option value="mechathlon25">MECHATHLON 2025</option>
-                <option value="mechathlon24">MECHATHLON 2024</option>
-                <option value="graduation25">Workshop on Robotics</option>
-                <option value="industrial-visit">Industrial Visit</option>
-                <option value="graduation">Graduation Day</option>
-            </select>
+        <!-- Event Selection Dropdown (improved style) -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6 col-lg-5">
+                <label for="event-select" class="form-label fw-bold"><i class="fas fa-calendar-alt me-2"></i>Explore Events</label>
+                <select id="event-select" class="form-select form-select-lg border-primary shadow-sm">
+                    <option value="">-- Choose an Event --</option>
+                    <option value="mechathlon25">🏆 MECHATHLON 2025 (National Level Symposium)</option>
+                    <option value="mechathlon24">⚡ MECHATHLON 2024 (Annual Sports & Tech Fest)</option>
+                    <option value="graduation25">🤖 Workshop on Robotics & Automation</option>
+                    <option value="industrial-visit">🏭 Industrial Visit – Heavy Engineering</option>
+                    <option value="graduation">🎓 Graduation Day & Award Ceremony</option>
+                </select>
+            </div>
         </div>
 
-        <!-- Event Title -->
-        <div id="event-title" class="event-title"></div>
+        <!-- Event Title Section -->
+        <div id="event-title" class="event-title text-center mx-auto"></div>
 
-        <!-- Image Gallery Section -->
-        <div id="gallery" class="row">
+        <!-- Dynamic Gallery Grid -->
+        <div id="gallery" class="row g-4">
             <div class="col-12">
-                <p class="no-images">Please select an event to view photos</p>
+                <p class="no-images"><i class="fas fa-images me-2"></i>Please select an event to view memories</p>
             </div>
         </div>
     </div>
 
-    <!-- Lightbox -->
+    <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
             <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
             <span class="lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
-            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="Gallery enlarged view">
             <span class="lightbox-next" onclick="changeImage(1)">&#10095;</span>
             <div id="lightbox-counter" class="lightbox-counter"></div>
         </div>
     </div>
 
-    <!-- Footer Section -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 Department of Mechanical Engineering. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-0">&copy; 2025 Department of Mechanical Engineering | P.T.Lee Chengalvaraya Naicker Polytechnic College</p>
     </footer>
 
     <script>
-        // Event data with folder names and display names
+        // ----------------------------- EVENT DATA WITH CORRECT URLs -------------------------
+        // For mechathlon25: relative images under "images/gallery/mechathlon25/"
+        // For mechathlon24: absolute URLs from official server (already full paths)
+        // For other events: relative paths under respective folders (images/gallery/event-folder/)
+
         const events = {
             "mechathlon25": {
-                name: "MECHATHLON 2025 (A National Level Technical Symposium)",
+                name: "🏆 MECHATHLON 2025 – A National Level Technical Symposium",
+                // array of local filenames (assuming stored in images/gallery/mechathlon25/)
                 images: ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg", "8.jpeg", "9.jpeg", "10.jpeg",  
-                            "11.jpeg", "12.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg", "19.jpeg", "20.jpeg",  
-                            "21.jpeg", "22.jpeg", "23.jpeg", "24.jpeg", "25.jpeg", "26.jpeg", "27.jpeg", "28.jpeg", "29.jpeg", "30.jpeg",  
-                            "31.jpeg", "32.jpeg", "33.jpeg", "34.jpeg", "35.jpeg", "36.jpeg", "37.jpeg", "38.jpeg", "39.jpeg", "40.jpeg",  
-                            "41.jpeg", "42.jpeg", "43.jpeg", "44.jpeg", "45.jpeg", "46.jpeg", "47.jpeg", "48.jpeg", "49.jpeg", "50.jpeg",  
-                            "51.jpeg", "52.jpeg", "53.jpeg", "54.jpeg", "55.jpeg", "56.jpeg", "57.jpeg", "58.jpeg", "59.jpeg", "60.jpeg",  
-                            "61.jpeg", "62.jpeg", "63.jpeg", "64.jpeg", "65.jpeg", "66.jpeg", "67.jpeg", "68.jpeg", "69.jpeg", "70.jpeg",  
-                            "71.jpeg", "72.jpeg", "73.jpeg", "74.jpeg", "75.jpeg", "76.jpeg", "77.jpeg", "78.jpeg", "79.jpeg", "80.jpeg",  
-                            "81.jpeg", "82.jpeg", "83.jpeg", "84.jpeg", "85.jpeg", "86.jpeg", "87.jpeg", "88.jpeg", "89.jpeg", "90.jpeg",  
-                            "91.jpeg", "92.jpeg", "93.jpeg", "94.jpeg", "95.jpeg", "96.jpeg", "97.jpeg", "98.jpeg", "99.jpeg", "100.jpeg",  
-                            "101.jpeg"  
-]
+                         "11.jpeg", "12.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg", "18.jpeg", "19.jpeg", "20.jpeg",  
+                         "21.jpeg", "22.jpeg", "23.jpeg", "24.jpeg", "25.jpeg", "26.jpeg", "27.jpeg", "28.jpeg", "29.jpeg", "30.jpeg",  
+                         "31.jpeg", "32.jpeg", "33.jpeg", "34.jpeg", "35.jpeg", "36.jpeg", "37.jpeg", "38.jpeg", "39.jpeg", "40.jpeg",  
+                         "41.jpeg", "42.jpeg", "43.jpeg", "44.jpeg", "45.jpeg", "46.jpeg", "47.jpeg", "48.jpeg", "49.jpeg", "50.jpeg",  
+                         "51.jpeg", "52.jpeg", "53.jpeg", "54.jpeg", "55.jpeg", "56.jpeg", "57.jpeg", "58.jpeg", "59.jpeg", "60.jpeg",  
+                         "61.jpeg", "62.jpeg", "63.jpeg", "64.jpeg", "65.jpeg", "66.jpeg", "67.jpeg", "68.jpeg", "69.jpeg", "70.jpeg",  
+                         "71.jpeg", "72.jpeg", "73.jpeg", "74.jpeg", "75.jpeg", "76.jpeg", "77.jpeg", "78.jpeg", "79.jpeg", "80.jpeg",  
+                         "81.jpeg", "82.jpeg", "83.jpeg", "84.jpeg", "85.jpeg", "86.jpeg", "87.jpeg", "88.jpeg", "89.jpeg", "90.jpeg",  
+                         "91.jpeg", "92.jpeg", "93.jpeg", "94.jpeg", "95.jpeg", "96.jpeg", "97.jpeg", "98.jpeg", "99.jpeg", "100.jpeg",  
+                         "101.jpeg"]
             },
             "mechathlon24": {
-                name: "Annual Sports Meet",
-                images: ["http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_000001.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_00001.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0001.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0002.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0003.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0005.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0008.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0009.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0011.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0013.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0019.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_002.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0020.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0021.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0022.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0023.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0024.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0025.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0026.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0028.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_003.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0030.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0035.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0037.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0039.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_004.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0040.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0041.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0042.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0043.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0049.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_005.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0053.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0055.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0056.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0057.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0058.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0059.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_006.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0060.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0061.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0062.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0063.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0066.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0137.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0152.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0153.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0154.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0155.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0156.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0157.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0158.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0159.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0160.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0161.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0162.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0163.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0164.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0165.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0166.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0167.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0168.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0169.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0170.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0171.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0172.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0173.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0175.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0176.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0177.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0178.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0179.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0180.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0181.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0182.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0183.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0184.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0185.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0186.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0187.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0188.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0189.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0190.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0191.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0192.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0193.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0194.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0195.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0196.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0197.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0198.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0199.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0200.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0201.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0202.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0203.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0204.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0205.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0206.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0207.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0208.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0209.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0210.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0211.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0212.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0213.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0215.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0216.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0217.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0218.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0219.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0220.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0224.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0229.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1301.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1325.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1336.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1361.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1362.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1363.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1364.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1365.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1369.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1370.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1371.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1372.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1373.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1374.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1382.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1383.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1384.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1385.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1386.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1393.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1395.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1400.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1403.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1404.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1405.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1406.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1407.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1409.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1410.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1411.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1413.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1418.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1420.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1421.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1423.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1427.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1428.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1429.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1431.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1433.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1435.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1436.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1437.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1438.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1439.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1440.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1441.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1445.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1449.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1455.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1458.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1474.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1475.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1476.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1483.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1488.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1490.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1494.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1506.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1507.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1512.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1521.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1529.JPG",
-              "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1531.JPG",]
+                name: "⚡ MECHATHLON 2024 – Annual Sports & Technical Extravaganza",
+                // Full absolute URLs (corrected to ensure they load directly)
+                images: [
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_000001.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_00001.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0001.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0002.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0003.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0005.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0008.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0009.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0011.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0013.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0019.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_002.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0020.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0021.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0022.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0023.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0024.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0025.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0026.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0028.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_003.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0030.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0035.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0037.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0039.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_004.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0040.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0041.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0042.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0043.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0049.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_005.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0053.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0055.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0056.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0057.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0058.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0059.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_006.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0060.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0061.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0062.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0063.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0066.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0137.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0152.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0153.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0154.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0155.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0156.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0157.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0158.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0159.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0160.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0161.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0162.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0163.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0164.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0165.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0166.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0167.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0168.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0169.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0170.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0171.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0172.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0173.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0175.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0176.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0177.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0178.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0179.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0180.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0181.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0182.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0183.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0184.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0185.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0186.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0187.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0188.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0189.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0190.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0191.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0192.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0193.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0194.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0195.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0196.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0197.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0198.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0199.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0200.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0201.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0202.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0203.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0204.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0205.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0206.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0207.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0208.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0209.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0210.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0211.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0212.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0213.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0215.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0216.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0217.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0218.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0219.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0220.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0224.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_0229.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1301.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1325.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1336.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1361.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1362.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1363.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1364.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1365.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1369.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1370.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1371.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1372.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1373.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1374.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1382.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1383.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1384.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1385.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1386.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1393.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1395.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1400.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1403.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1404.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1405.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1406.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1407.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1409.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1410.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1411.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1413.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1418.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1420.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1421.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1423.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1427.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1428.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1429.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1431.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1433.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1435.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1436.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1437.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1438.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1439.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1440.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1441.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1445.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1449.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1455.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1458.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1474.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1475.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1476.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1483.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1488.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1490.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1494.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1506.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1507.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1512.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1521.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1529.JPG",
+                    "http://ptleecnpt.edu.in/img/mechathlon2k24/DSC_1531.JPG"
+                ]
             },
             "graduation25": {
-                name: "Workshop on Robotics",
+                name: "🤖 Hands-on Workshop: Robotics & Industrial Automation",
                 images: ["1.jpg", "2.jpg", "3.jpg"]
             },
             "industrial-visit": {
-                name: "Industrial Visit",
+                name: "🏭 Industrial Visit to Heavy Engineering Works",
                 images: ["industry1.jpg", "industry2.jpg"]
             },
             "graduation": {
-                name: "Graduation Day",
+                name: "🎓 Graduation Day Celebration & Medal Ceremony",
                 images: ["grad1.jpg", "grad2.jpg", "grad3.jpg", "grad4.jpg"]
             }
         };
 
-        // Lightbox variables
-        let currentEvent = '';
-        let currentImages = [];
-        let currentIndex = 0;
+        // ---------- Helper to get correct image source (absolute vs relative) ----------
+        function getImageUrl(eventKey, imagePath) {
+            // if imagePath starts with http:// or https:// -> absolute URL (mechathlon24 case)
+            if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+                return imagePath;
+            }
+            // otherwise relative: images/gallery/event-folder/filename
+            return `images/gallery/${eventKey}/${imagePath}`;
+        }
 
+        // Lightbox state
+        let currentEventKey = '';
+        let currentImageList = [];
+        let currentIdx = 0;
+
+        // Render gallery after selection
         function showImages() {
-            const selectedEvent = document.getElementById("event-select").value;
-            const gallery = document.getElementById("gallery");
-            const eventTitle = document.getElementById("event-title");
+            const selectElem = document.getElementById("event-select");
+            const selectedEvent = selectElem.value;
+            const galleryContainer = document.getElementById("gallery");
+            const eventTitleDiv = document.getElementById("event-title");
             
-            gallery.innerHTML = '';
+            galleryContainer.innerHTML = '';
             
             if (!selectedEvent) {
-                eventTitle.innerHTML = '';
-                gallery.innerHTML = '<div class="col-12"><p class="no-images">Please select an event to view photos</p></div>';
+                eventTitleDiv.innerHTML = '';
+                galleryContainer.innerHTML = '<div class="col-12"><p class="no-images"><i class="fas fa-folder-open me-2"></i>Please select an event to view photos</p></div>';
                 return;
             }
             
             const eventData = events[selectedEvent];
-            eventTitle.innerHTML = eventData.name;
-            currentEvent = selectedEvent;
-            currentImages = eventData.images;
-            
-            if (eventData.images.length === 0) {
-                gallery.innerHTML = '<div class="col-12"><p class="no-images">No photos available for this event</p></div>';
+            if (!eventData) {
+                eventTitleDiv.innerHTML = '';
+                galleryContainer.innerHTML = '<div class="col-12"><p class="no-images">⚠️ Event data not found.</p></div>';
                 return;
             }
             
-            eventData.images.forEach((image, index) => {
+            eventTitleDiv.innerHTML = `<i class="fas fa-camera me-2"></i> ${eventData.name}`;
+            currentEventKey = selectedEvent;
+            currentImageList = eventData.images;
+            
+            if (eventData.images.length === 0) {
+                galleryContainer.innerHTML = '<div class="col-12"><p class="no-images">📷 No photos available for this event</p></div>';
+                return;
+            }
+            
+            // Build gallery grid
+            eventData.images.forEach((imgSrc, idx) => {
+                const fullSrc = getImageUrl(selectedEvent, imgSrc);
                 const col = document.createElement('div');
                 col.className = 'col-md-4 col-sm-6 gallery-item';
                 
-                const imgContainer = document.createElement('div');
-                imgContainer.className = 'card mb-4 shadow-sm';
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'card h-100 border-0 shadow-sm rounded-3 overflow-hidden';
                 
-                const img = document.createElement('img');
-                img.src = `images/gallery/${selectedEvent}/${image}`;
-                img.alt = eventData.name;
-                img.className = 'card-img-top';
-                img.onclick = () => openLightbox(index);
+                const imageElem = document.createElement('img');
+                imageElem.src = fullSrc;
+                imageElem.alt = `${eventData.name} - image ${idx+1}`;
+                imageElem.className = 'card-img-top';
+                imageElem.loading = 'lazy';
+                // optional: handle broken images gracefully
+                imageElem.onerror = function() {
+                    this.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
+                    this.style.objectFit = 'contain';
+                };
+                imageElem.onclick = (function(i) {
+                    return function() { openLightbox(i); };
+                })(idx);
                 
-                imgContainer.appendChild(img);
-                col.appendChild(imgContainer);
-                gallery.appendChild(col);
+                cardDiv.appendChild(imageElem);
+                col.appendChild(cardDiv);
+                galleryContainer.appendChild(col);
             });
         }
 
         function openLightbox(index) {
-            currentIndex = index;
+            if (!currentImageList.length) return;
+            currentIdx = index;
             const lightbox = document.getElementById("lightbox");
             const lightboxImg = document.getElementById("lightbox-img");
-            const lightboxCounter = document.getElementById("lightbox-counter");
+            const counterSpan = document.getElementById("lightbox-counter");
             
-            lightboxImg.src = `images/gallery/${currentEvent}/${currentImages[currentIndex]}`;
-            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+            const imgUrl = getImageUrl(currentEventKey, currentImageList[currentIdx]);
+            lightboxImg.src = imgUrl;
+            counterSpan.textContent = `${currentIdx + 1} / ${currentImageList.length}`;
             lightbox.style.display = "block";
-            document.body.style.overflow = "hidden"; // Prevent scrolling
+            document.body.style.overflow = "hidden";
         }
-
+        
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
-            document.body.style.overflow = "auto"; // Re-enable scrolling
+            document.body.style.overflow = "auto";
         }
-
+        
         function changeImage(step) {
-            currentIndex += step;
-            
-            // Wrap around if at beginning or end
-            if (currentIndex >= currentImages.length) {
-                currentIndex = 0;
-            } else if (currentIndex < 0) {
-                currentIndex = currentImages.length - 1;
-            }
+            if (!currentImageList.length) return;
+            currentIdx += step;
+            if (currentIdx >= currentImageList.length) currentIdx = 0;
+            if (currentIdx < 0) currentIdx = currentImageList.length - 1;
             
             const lightboxImg = document.getElementById("lightbox-img");
-            const lightboxCounter = document.getElementById("lightbox-counter");
-            
-            lightboxImg.src = `images/gallery/${currentEvent}/${currentImages[currentIndex]}`;
-            lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+            const counterSpan = document.getElementById("lightbox-counter");
+            const newUrl = getImageUrl(currentEventKey, currentImageList[currentIdx]);
+            lightboxImg.src = newUrl;
+            counterSpan.textContent = `${currentIdx + 1} / ${currentImageList.length}`;
         }
-
-        // Close lightbox when clicking outside the image
-        document.getElementById("lightbox").onclick = function(e) {
-            if (e.target === this) {
-                closeLightbox();
+        
+        // Attach listeners and keyboard nav
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectEl = document.getElementById("event-select");
+            if (selectEl) {
+                selectEl.addEventListener('change', showImages);
             }
-        };
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            const lightbox = document.getElementById("lightbox");
-            if (lightbox.style.display === "block") {
-                switch(e.key) {
-                    case 'ArrowLeft':
-                        changeImage(-1);
-                        break;
-                    case 'ArrowRight':
-                        changeImage(1);
-                        break;
-                    case 'Escape':
-                        closeLightbox();
-                        break;
+            // Lightbox close on background click
+            const lightboxDiv = document.getElementById("lightbox");
+            if (lightboxDiv) {
+                lightboxDiv.addEventListener('click', (e) => {
+                    if (e.target === lightboxDiv) closeLightbox();
+                });
+            }
+            document.addEventListener('keydown', (e) => {
+                const lightbox = document.getElementById("lightbox");
+                if (lightbox && lightbox.style.display === "block") {
+                    if (e.key === 'ArrowLeft') changeImage(-1);
+                    else if (e.key === 'ArrowRight') changeImage(1);
+                    else if (e.key === 'Escape') closeLightbox();
                 }
-            }
+            });
         });
     </script>
 
-    <!-- External JS for Bootstrap -->
+    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
