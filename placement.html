@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Additional styling for placement table - keeps original CSS untouched except adding necessary table styles */
         .placement-table {
             width: 100%;
             border-collapse: collapse;
@@ -36,6 +37,21 @@
             margin: 15px 0;
             color: #2c3e50;
             font-weight: bold;
+        }
+        /* Additional badge or minor styling for counts - doesn't conflict */
+        .placement-stats {
+            background-color: #e9ecef;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .filter-message {
+            background: #f0f7ff;
+            border-left: 4px solid #1546cc;
+            padding: 8px 15px;
+            margin: 15px 0;
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -82,24 +98,24 @@
         </div>
     </nav>
 
-    <!-- Placement Section -->
+    <!-- Placement Section - Modified to show MECHANICAL ONLY data from actual PDF records -->
     <div class="container mt-5">
-        <h2>Placement Details</h2>
+        <h2>Placement Details <span style="font-size: 1rem; background: #e0e7ff; padding: 4px 10px; border-radius: 20px;">Mechanical Engineering Only</span></h2>
         
-        <!-- Academic Year Selection Dropdown -->
+        <!-- Academic Year Selection Dropdown (Matches data years from PDFs: 2022-2023, 2023-2024, 2024-2025) -->
         <div class="mb-4">
             <label for="year-select" class="form-label">Select an Academic Year</label>
             <select id="year-select" class="form-select" onchange="showPlacementDetails()">
                 <option value="">-- Select Academic Year --</option>
-                <option value="2021-2024">AY 2021-2024</option>
-                <option value="2020-2023">AY 2020-2023</option>
-                <option value="2019-2022">AY 2019-2022</option>
+                <option value="2022-2023">AY 2022-2023</option>
+                <option value="2023-2024">AY 2023-2024</option>
+                <option value="2024-2025">AY 2024-2025</option>
             </select>
         </div>
 
-        <!-- Placement Details Section -->
+        <!-- Placement Details Section: dynamically populated with mechanical-only data from actual PDF files -->
         <div id="placement-details">
-            <p class="no-data">Please select an academic year to view placement details</p>
+            <p class="no-data">Please select an academic year to view Mechanical Engineering placement details</p>
         </div>
     </div>
 
@@ -109,63 +125,149 @@
     </footer>
 
     <script>
-        // Sample placement data for different academic years
-        const placementData = {
-            "2021-2024": [
-                { slNo: 1, name: "Ramesh Kumar", company: "TATA Motors", designation: "Junior Engineer", salary: "₹25,000" },
-                { slNo: 2, name: "Suresh Babu", company: "Ashok Leyland", designation: "Trainee Engineer", salary: "₹22,000" },
-                { slNo: 3, name: "Priya M", company: "TVS Motors", designation: "Quality Inspector", salary: "₹20,000" },
-                { slNo: 4, name: "Arun J", company: "L&T Construction", designation: "Site Engineer", salary: "₹28,000" }
+        // --------------------------------------------------------------
+        // MECHANICAL ENGINEERING ONLY PLACEMENT DATA
+        // Extracted directly from the three provided PDF files:
+        // Placement-Details-Diploma-2022-2023.pdf,
+        // Placement-Details-Diploma-2023-2024.pdf,
+        // Placement-Details-Diploma-2024-2025.pdf
+        // Filtered strictly for "Mechanical Engineering" discipline.
+        // Includes: Student Name, Employer Name, Placement Type (On/Off Campus)
+        // --------------------------------------------------------------
+
+        const mechanicalPlacements = {
+            "2022-2023": [
+                { slNo: 1, name: "Jayasuriya Y", universityId: "21202168", employer: "J. Ray Mcdermott Engineering Services Pvt. Ltd", placementType: "Off Campus Placement" },
+                { slNo: 2, name: "Madan J G", universityId: "21202178", employer: "J. Ray Mcdermott Engineering Services Pvt. Ltd", placementType: "Off Campus Placement" },
+                { slNo: 3, name: "Akash S", universityId: "21290545", employer: "J. Ray Mcdermott Engineering Services Pvt. Ltd", placementType: "Off Campus Placement" }
             ],
-            "2020-2023": [
-                { slNo: 1, name: "Karthik S", company: "Hyundai Motors", designation: "Production Engineer", salary: "₹24,000" },
-                { slNo: 2, name: "Deepa R", company: "Bosch India", designation: "Technical Associate", salary: "₹26,000" },
-                { slNo: 3, name: "Vijay K", company: "Sundaram Clayton", designation: "Junior Engineer", salary: "₹21,000" }
+            "2023-2024": [
+                { slNo: 1, name: "Santhosh S", universityId: "22202297", employer: "Atlas Copco", placementType: "On & Off Campus Placement" },
+                { slNo: 2, name: "Nareshkumar H", universityId: "22220007", employer: "Dolphin", placementType: "On Campus Placement" },
+                { slNo: 3, name: "Navinraj K", universityId: "22220008", employer: "Troester", placementType: "Off Campus Placement" },
+                { slNo: 4, name: "Akbar Sheriff N", universityId: "22119988", employer: "Fichtner", placementType: "Off Campus Placement" },
+                { slNo: 5, name: "Yuvaraj K", universityId: "22290692", employer: "Fichtner", placementType: "Off Campus Placement" },
+                { slNo: 6, name: "Logesh K", universityId: "22202280", employer: "iMarque", placementType: "On Campus Placement" },
+                { slNo: 7, name: "Kishore Kumar M", universityId: "22202279", employer: "Neo Motion", placementType: "On Campus Placement" },
+                { slNo: 8, name: "Mathesh E", universityId: "22220000", employer: "Neo Motion", placementType: "On Campus Placement" },
+                { slNo: 9, name: "Veerandhar V", universityId: "22202308", employer: "Neo Motion", placementType: "On Campus Placement" },
+                { slNo: 10, name: "Yuvaraj L", universityId: "22298300", employer: "Neo Motion", placementType: "On Campus Placement" },
+                { slNo: 11, name: "Praveen Kumar K", universityId: "22202289", employer: "TIDC", placementType: "On Campus Placement" },
+                { slNo: 12, name: "Sanju K", universityId: "22221261", employer: "TIDC", placementType: "On Campus Placement" },
+                { slNo: 13, name: "Surya G", universityId: "22220026", employer: "TIDC", placementType: "On Campus Placement" },
+                { slNo: 14, name: "Naveen Kumar V", universityId: "22202287", employer: "Troester", placementType: "Off Campus Placement" },
+                { slNo: 15, name: "Gnanavel G", universityId: "22202271", employer: "TVS Motors", placementType: "Online Placement" },
+                { slNo: 16, name: "Prithudhev R", universityId: "22220011", employer: "TVS Motors", placementType: "Online Placement" },
+                { slNo: 17, name: "Rajkumar.S", universityId: "22220013", employer: "TVS Motors", placementType: "Online Placement" },
+                { slNo: 18, name: "Rohith C R", universityId: "22220292", employer: "Wood India", placementType: "On Campus Placement" },
+                { slNo: 19, name: "Suman K", universityId: "22220301", employer: "Wood India", placementType: "On Campus Placement" },
+                { slNo: 20, name: "Thiyagarajan G", universityId: "22290691", employer: "Wood India", placementType: "On Campus Placement" },
+                { slNo: 21, name: "Venmani N.K", universityId: "22202309", employer: "Wood India", placementType: "On Campus Placement" },
+                { slNo: 22, name: "Vijay Krishna G", universityId: "22202312", employer: "Wood India", placementType: "On Campus Placement" },
+                { slNo: 23, name: "Akash B", universityId: "22298292", employer: "Alstom", placementType: "Off Campus Placement" }
             ],
-            "2019-2022": [
-                { slNo: 1, name: "Manoj P", company: "Bajaj Auto", designation: "Quality Engineer", salary: "₹23,000" },
-                { slNo: 2, name: "Divya S", company: "Ford India", designation: "Trainee Engineer", salary: "₹20,000" },
-                { slNo: 3, name: "Rajesh K", company: "Mahindra & Mahindra", designation: "Production Supervisor", salary: "₹25,000" },
-                { slNo: 4, name: "Anitha V", company: "Royal Enfield", designation: "Junior Engineer", salary: "₹22,000" },
-                { slNo: 5, name: "Senthil N", company: "Toyota Kirloskar", designation: "Technical Assistant", salary: "₹24,000" }
+            "2024-2025": [
+                { slNo: 1, name: "Aravind M", universityId: "23202316", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 2, name: "Arun G", universityId: "23202317", employer: "Mcdermott", placementType: "Off Campus Placement" },
+                { slNo: 3, name: "Ashvan S", universityId: "23202318", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 4, name: "Ashwanth Kumar S", universityId: "23202319", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 5, name: "Gopala Krishnan R N", universityId: "23202323", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 6, name: "Hari Krishna R", universityId: "23202326", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 7, name: "Hari Prasath .K.A", universityId: "23202327", employer: "Wood India", placementType: "On Campus Placement" },
+                { slNo: 8, name: "Kannan V", universityId: "23202331", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 9, name: "Manoj S", universityId: "23202335", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 10, name: "Midhun Sundar S", universityId: "23202337", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 11, name: "Mohammed Ameen P", universityId: "23202339", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 12, name: "Mohammed Ameerule B.R", universityId: "23202340", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 13, name: "Mukesh J", universityId: "23202341", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 14, name: "Naresh B", universityId: "23202342", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 15, name: "Naveenkumar K S", universityId: "23202343", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 16, name: "Praveen Kumar K M", universityId: "23202346", employer: "Wood India", placementType: "On Campus Placement" },
+                { slNo: 17, name: "Praveenraj K", universityId: "23202348", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 18, name: "Puspak Kumar", universityId: "23202349", employer: "Johnson Lifts", placementType: "On Campus Placement" },
+                { slNo: 19, name: "Raghul J", universityId: "23202350", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 20, name: "Rubeshwaran S", universityId: "23202352", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 21, name: "Samuel Devadasan V", universityId: "23202354", employer: "Seyon", placementType: "On Campus Placement" },
+                { slNo: 22, name: "Santhosh Kumar K", universityId: "23202355", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 23, name: "Sasidharan R", universityId: "23202357", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 24, name: "Shyam G", universityId: "23202360", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 25, name: "Sree Pachaiappan .S", universityId: "23202361", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 26, name: "Sujan S", universityId: "23202363", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 27, name: "Vengadesh P", universityId: "23202365", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 28, name: "Vishal A", universityId: "23202366", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 29, name: "Vishwanath M", universityId: "23202367", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 30, name: "Yasmeen Fathima .S", universityId: "23202368", employer: "Johnson Lifts", placementType: "On Campus Placement" },
+                { slNo: 31, name: "Gokul Y", universityId: "23202380", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 32, name: "Fazludeen S", universityId: "23223683", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 33, name: "Jeya Vishwa A", universityId: "23223689", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 34, name: "Lingeshwaran.K", universityId: "23223698", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 35, name: "Navin R", universityId: "23223703", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 36, name: "Rahul U", universityId: "23223707", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 37, name: "Sangeethraj E", universityId: "23223712", employer: "Johnson Lifts", placementType: "On Campus Placement" },
+                { slNo: 38, name: "Sanjaykumar L", universityId: "23223714", employer: "Seyon", placementType: "On Campus Placement" },
+                { slNo: 39, name: "Vignesh V", universityId: "23223727", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 40, name: "Hariharan P K", universityId: "23290787", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 41, name: "Kaliyamoorthi R", universityId: "23290788", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 42, name: "Mukesh Kumar R", universityId: "23290792", employer: "TVS Motors", placementType: "Online Placement" },
+                { slNo: 43, name: "Sanjay B", universityId: "23290797", employer: "Johnson Lifts", placementType: "On Campus Placement" },
+                { slNo: 44, name: "Sanjay S", universityId: "23290798", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 45, name: "Santhosh P", universityId: "23290799", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 46, name: "Shiva Sai K", universityId: "23290800", employer: "Johnson lifts", placementType: "On Campus Placement" },
+                { slNo: 47, name: "Suhail Hameed S S", universityId: "23290801", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 48, name: "Aravindan B", universityId: "23297196", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 49, name: "Bipin Singh D", universityId: "23297197", employer: "Johnson Lifts", placementType: "On Campus Placement" },
+                { slNo: 50, name: "Jagan M", universityId: "23297199", employer: "Abi-Showatech", placementType: "On Campus Placement" },
+                { slNo: 51, name: "Rakesh Kumar S", universityId: "23297201", employer: "Transenergy", placementType: "On Campus Placement" },
+                { slNo: 52, name: "Vasantharajan P", universityId: "23297206", employer: "Johnson Lifts", placementType: "On Campus Placement" }
             ]
         };
 
+        // Helper function to display placement data in a structured table with mechanical focus
         function showPlacementDetails() {
             const selectedYear = document.getElementById("year-select").value;
             const placementDiv = document.getElementById("placement-details");
-            
+
             if (!selectedYear) {
-                placementDiv.innerHTML = '<p class="no-data">Please select an academic year to view placement details</p>';
+                placementDiv.innerHTML = '<p class="no-data">Please select an academic year to view Mechanical Engineering placement details</p>';
                 return;
             }
+
+            const placements = mechanicalPlacements[selectedYear];
             
-            const data = placementData[selectedYear];
-            
-            if (data && data.length > 0) {
+            if (placements && placements.length > 0) {
+                // Count unique employers summary
+                const employerSet = new Set();
+                placements.forEach(p => employerSet.add(p.employer));
+                const totalStudents = placements.length;
+                const uniqueEmployers = employerSet.size;
+
                 let tableHTML = `
-                    <div class="selected-year">Placement Details for Academic Year ${selectedYear}</div>
+                    <div class="selected-year">🎯 Mechanical Engineering Placement Details — Academic Year ${selectedYear}</div>
+                    <div class="filter-message">
+                        📌 Showing <strong>${totalStudents}</strong> placed students from Mechanical Engineering department only. 
+                        Placed in <strong>${uniqueEmployers}</strong> unique organizations.
+                    </div>
                     <table class="placement-table">
                         <thead>
                             <tr>
-                                <th>SL.No</th>
-                                <th>Name of the Student</th>
-                                <th>Company Placed</th>
-                                <th>Designation</th>
-                                <th>Salary (per month)</th>
+                                <th>S. No.</th>
+                                <th>Student Name</th>
+                                <th>University Serial No.</th>
+                                <th>Employer Name</th>
+                                <th>Placement Type</th>
                             </tr>
                         </thead>
                         <tbody>
                 `;
                 
-                data.forEach(student => {
+                placements.forEach(student => {
                     tableHTML += `
                         <tr>
                             <td>${student.slNo}</td>
-                            <td>${student.name}</td>
-                            <td>${student.company}</td>
-                            <td>${student.designation}</td>
-                            <td>${student.salary}</td>
+                            <td><strong>${student.name}</strong></td>
+                            <td>${student.universityId}</td>
+                            <td>${student.employer}</td>
+                            <td><span class="badge bg-secondary" style="background-color:#0d6efd!important;">${student.placementType}</span></td>
                         </tr>
                     `;
                 });
@@ -173,17 +275,31 @@
                 tableHTML += `
                         </tbody>
                     </table>
-                    <p class="mt-3">Total Placements: ${data.length} students </p>
+                    <div class="mt-3 text-muted" style="background:#f8f9fa; padding: 10px; border-radius: 10px;">
+                        <i class="fas fa-chart-line"></i> <strong>Placement Highlights (Mechanical):</strong> 
+                        <ul class="mt-2 mb-0">
+                            <li>✅ Total Mechanical Students Placed: ${totalStudents}</li>
+                            <li>🏢 Top Recruiters: ${Array.from(employerSet).slice(0, 5).join(', ')}${uniqueEmployers > 5 ? ' and more' : ''}</li>
+                            <li>📅 Academic Year: ${selectedYear}</li>
+                        </ul>
+                    </div>
                 `;
                 
                 placementDiv.innerHTML = tableHTML;
             } else {
-                placementDiv.innerHTML = '<p class="no-data">No placement data available for the selected academic year</p>';
+                placementDiv.innerHTML = `<p class="no-data">⚠️ No Mechanical Engineering placement records available for the academic year ${selectedYear}. Please check other years.</p>`;
             }
         }
+
+        // Ensure initial message displays correctly
+        document.addEventListener("DOMContentLoaded", function() {
+            // Initial placeholder set as required, dropdown has default no selection
+            const defaultDiv = document.getElementById("placement-details");
+            if(defaultDiv) defaultDiv.innerHTML = '<p class="no-data">Please select an academic year to view Mechanical Engineering placement details</p>';
+        });
     </script>
 
-    <!-- External JS for Bootstrap -->
+    <!-- External JS for Bootstrap (unchanged) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
