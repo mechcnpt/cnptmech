@@ -19,6 +19,68 @@
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(-6px); }
             100% { opacity: 1; transform: translateY(0); }
+           }
+   
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a1e4b;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+        header h3 {
+            font-size: 1rem;
+            color: #1546cc;
+            font-weight: 600;
+            margin: 0;
+        }
+        /* navbar */
+        .navbar-dark.bg-dark {
+            background: #0a1e4b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .navbar .nav-link {
+            font-weight: 500;
+            padding: 10px 16px;
+            transition: 0.2s;
+        }
+        .navbar .nav-link:hover, .navbar .nav-link.active {
+            background: #1546cc;
+            border-radius: 6px;
+            color: white;
+        }
+        .dropdown-menu {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dropdown-item:hover {
+            background: #eef3ff;
+            color: #0a1e4b;
+        }
+        /* footer */
+        footer {
+            background: #0a1e4b;
+            color: #e0e7ff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 0.95rem;
+            border-top: 3px solid #1546cc;
+        }
      
         /* ---------- magazine / pdf viewer ---------- */
         .magazine-wrapper {
