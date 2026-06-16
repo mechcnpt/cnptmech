@@ -61,6 +61,12 @@
             border-radius: 12px;
             margin-top: 20px;
         }
+        .company-count-badge {
+            background: #e9ecef;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
@@ -106,7 +112,7 @@
 
     <!-- Placement Section - Mechanical Engineering Only -->
     <div class="container mt-5">
-        <h2>Placement Details </h2>
+        <h2>Placement Details <span style="font-size: 1rem; background: #e0e7ff; padding: 4px 10px; border-radius: 20px;">Mechanical Engineering Only</span></h2>
         
         <!-- Academic Year Selection Dropdown -->
         <div class="mb-4">
@@ -133,11 +139,14 @@
     <script>
         // --------------------------------------------------------------
         // COMPLETE MECHANICAL ENGINEERING PLACEMENT DATA (NO SALARY INFO)
-        // Sources: placement-22-23.docx, Placement-Details-Diploma-2023-2024.pdf, placement-2024-2025 webside.docx
+        // Sources: 
+        // 2022-2023: placement-22-23 NEW.docx (26 students - revised)
+        // 2023-2024: Placement-Details-Diploma-2023-2024.pdf (23 students)
+        // 2024-2025: placement-2024-2025 webside.docx (68 students)
         // --------------------------------------------------------------
 
         const mechanicalPlacements = {
-            // 2022-2023 from placement-22-23.docx (salary info removed)
+            // 2022-2023 REVISED from placement-22-23 NEW.docx (26 students)
             "2022-2023": [
                 { slNo: 1, name: "AMOS ISAAC", enrollmentId: "21202161", employer: "L&T Construction And Mining Machinery", placementType: "Off Campus" },
                 { slNo: 2, name: "JAYASURIYA Y", enrollmentId: "21202168", employer: "J. Ray McDermott Engineering Services Pvt. Ltd.", placementType: "Off Campus" },
@@ -150,7 +159,21 @@
                 { slNo: 9, name: "MUKUNTHAN T J", enrollmentId: "21202188", employer: "AVANT-GARDE System And Control (P) Ltd", placementType: "Off Campus" },
                 { slNo: 10, name: "MOHAMED AL FATEEN S", enrollmentId: "21202183", employer: "DURR INDIA PVT LTD", placementType: "Off Campus" },
                 { slNo: 11, name: "MUNIYA RAJA P", enrollmentId: "21202189", employer: "LEGGETT & PLATT Automotive India Pvt Ltd", placementType: "Off Campus" },
-                { slNo: 12, name: "SHRIRAM M", enrollmentId: "21202205", employer: "CARPENTER AND PATERSON India Private Limited", placementType: "Off Campus" }
+                { slNo: 12, name: "SHRIRAM M", enrollmentId: "21202205", employer: "CARPENTER AND PATERSON India Private Limited", placementType: "Off Campus" },
+                { slNo: 13, name: "SANTHOSH KUMAR E", enrollmentId: "21202201", employer: "TUBE PRODUCT OF INDIA", placementType: "Off Campus" },
+                { slNo: 14, name: "MOHAMMED ASLAM M", enrollmentId: "21202184", employer: "NITTAN INDIA TECH PVT. LTD", placementType: "Off Campus" },
+                { slNo: 15, name: "STEPHEN RAJ B", enrollmentId: "21202209", employer: "GSH(INDIA) PVT LTD", placementType: "Off Campus" },
+                { slNo: 16, name: "MARIYASAVIOUR A", enrollmentId: "21202182", employer: "BOARD OF APPRENTICESHIP TRAINING - BALMER LAERIE AND CO LTD", placementType: "Off Campus" },
+                { slNo: 17, name: "SOMEISHWAR M", enrollmentId: "21202207", employer: "BRAKES INDIA PVT LTD", placementType: "Off Campus" },
+                { slNo: 18, name: "SATHISH KUMAR R B", enrollmentId: "21221473", employer: "NISCO PRECISION PVT LTD", placementType: "Off Campus" },
+                { slNo: 19, name: "SUDARSHAN K", enrollmentId: "21202211", employer: "HYUNDAI MOTOR INDIA PVT LTD", placementType: "Off Campus" },
+                { slNo: 20, name: "KARTHIKEYAN R", enrollmentId: "21202173", employer: "SRINIVASA ENTERPRISES", placementType: "Off Campus" },
+                { slNo: 21, name: "SAMUEL VASANTH KUMAR.A", enrollmentId: "21290552", employer: "VINS LIFE SAFETY SYSTEMS", placementType: "Off Campus" },
+                { slNo: 22, name: "PAUL PREM A", enrollmentId: "21202192", employer: "ASHOK LEYLAND PVT LTD", placementType: "Off Campus" },
+                { slNo: 23, name: "ABDUL RASHITH N", enrollmentId: "21221428", employer: "NISCO PRECISION PVT LTD", placementType: "Off Campus" },
+                { slNo: 24, name: "NITHISH KANNA J K", enrollmentId: "21202191", employer: "ASHOK LEYLAND PVT LTD", placementType: "Off Campus" },
+                { slNo: 25, name: "GUNASEKARAN S", enrollmentId: "21202165", employer: "AVANT-GARDE System And Control (P) Ltd", placementType: "Off Campus" },
+                { slNo: 26, name: "DHINESH KUMAR S", enrollmentId: "21298905", employer: "NISCO PRECISION PVT LTD", placementType: "Off Campus" }
             ],
             
             // 2023-2024 from Placement-Details-Diploma-2023-2024.pdf (Mechanical Engineering students only)
@@ -180,7 +203,7 @@
                 { slNo: 23, name: "Akash B", enrollmentId: "22298292", employer: "Alstom", placementType: "Off Campus" }
             ],
             
-            // 2024-2025 from placement-2024-2025 webside.docx
+            // 2024-2025 from placement-2024-2025 webside.docx (68 students)
             "2024-2025": [
                 { slNo: 1, name: "TAMILMANI B", enrollmentId: "22202304", employer: "Seoyon E-HWA Automotive India Private Limited", placementType: "On Campus" },
                 { slNo: 2, name: "SIBI V", enrollmentId: "22220021", employer: "Simpson & co, LTD Chennai", placementType: "On Campus" },
@@ -275,6 +298,10 @@
                 const totalStudents = placements.length;
                 const uniqueEmployers = employerMap.size;
                 
+                // Get top 3 employers
+                const sortedEmployers = Array.from(employerMap.entries()).sort((a, b) => b[1] - a[1]);
+                const topEmployers = sortedEmployers.slice(0, 3);
+                
                 let tableHTML = `
                     <div class="selected-year">⚙️ Mechanical Engineering Placement Details — ${selectedYear}</div>
                     <div class="filter-message">
@@ -290,8 +317,17 @@
                                 <div class="card text-white bg-success mb-3">
                                     <div class="card-header">🏆 Top Recruiters 2022-2023</div>
                                     <div class="card-body">
-                                        <h5 class="card-title">J. Ray McDermott (3 students)</h5>
-                                        <p class="card-text">L&T Construction (2 students) | MRF | Ashok Leyland</p>
+                                        <h5 class="card-title">J. Ray McDermott (3) | NISCO Precision (3)</h5>
+                                        <p class="card-text">Ashok Leyland (3) | L&T (2) | Avant-Garde (2)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card text-white bg-info mb-3">
+                                    <div class="card-header">📊 Placement Summary</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">${totalStudents} Students Placed</h5>
+                                        <p class="card-text">Strong industry partnerships with ${uniqueEmployers} companies</p>
                                     </div>
                                 </div>
                             </div>
@@ -345,7 +381,7 @@
                         <ul class="mt-2 mb-0">
                             <li>✅ Total Students Placed: ${totalStudents}</li>
                             <li>🏢 Total Recruiting Companies: ${uniqueEmployers}</li>
-                            <li>⭐ Top Recruiters: ${Array.from(employerMap.keys()).slice(0, 4).join(', ')}</li>
+                            <li>⭐ Top Recruiters: ${topEmployers.map(([name, count]) => `${name} (${count})`).join(', ')}</li>
                         </ul>
                     </div>
                 `;
